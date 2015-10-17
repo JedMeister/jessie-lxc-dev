@@ -5,7 +5,7 @@
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 %:
-	dh ${@} --parallel --with autoreconf,autotools_dev,python3,systemd
+	dh ${@} --parallel --with autoreconf,autotools_dev,python2,systemd
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
@@ -29,10 +29,9 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install -- SYSTEMD_UNIT_DIR=/lib/systemd/system
 
-	# removing unused files
-	rm -rf debian/tmp/usr/include
-	rm -f debian/tmp/usr/lib/*/*.so
-	rm -rf debian/tmp/usr/lib/*/pkgconfig
+        # lxc-dev-tkl (lxc-dev)
+	mkdir -p debian/lxc-dev/usr/bin
+	mv debian/tmp/usr/bin/lxc-test-* debian/lxc-dev/usr/bin
 
 	# remove lxc-top until lua-alt-getopt is available
 ifeq ($(DEB_VENDOR),Debian)

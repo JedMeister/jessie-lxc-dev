@@ -1,3 +1,11 @@
+lxc (1:1.0.6-6+deb8u1+turnkey1) UNRELEASED; urgency=medium
+
+  * TurnKey rebuild of source package to provide lxc-dev (called 
+    lxc-dev-tkl: to workaround current Jessie lxc replaces/conflicts 
+    with lxc-dev
+
+ -- Jeremy Davis <jeremy@turnkeylinux.org>  Sat, 17 Oct 2015 14:24:03 +1000
+
 lxc (1:1.0.6-6+deb8u1) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
