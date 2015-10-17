@@ -1,0 +1,15 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Don't mount fuse into the container, will fail if fuse isn't installed,
+ see https://github.com/lxc/lxc/issues/304.
+
+diff -Naurp lxc.orig/config/templates/debian.common.conf.in lxc/config/templates/debian.common.conf.in
+--- lxc.orig/config/templates/debian.common.conf.in
++++ lxc/config/templates/debian.common.conf.in
+@@ -4,7 +4,6 @@ lxc.pivotdir = lxc_putold
+ # Default mount entries
+ lxc.mount.entry = proc proc proc nodev,noexec,nosuid 0 0
+ lxc.mount.entry = sysfs sys sysfs defaults 0 0
+-lxc.mount.entry = /sys/fs/fuse/connections sys/fs/fuse/connections none bind,optional 0 0
+ 
+ # Default console settings
+ lxc.tty = 4

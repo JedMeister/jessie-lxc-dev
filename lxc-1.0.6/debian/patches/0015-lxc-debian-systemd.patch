@@ -1,0 +1,58 @@
+Author: Antonio Terceiro <terceiro@debian.org>
+Description: lxc-debian: support systemd as PID 1
+ Containers with systemd need a somewhat special setup, which I borrowed
+ and adapted from lxc-fedora. These changes are required so that Debian 8
+ (jessie) containers work properly, and are a no-op for previous Debian
+ versions.
+
+diff -Naurp lxc.orig/templates/lxc-debian.in lxc/templates/lxc-debian.in
+--- lxc.orig/templates/lxc-debian.in
++++ lxc/templates/lxc-debian.in
+@@ -159,6 +159,38 @@ EOF
+     return 0
+ }
+ 
++configure_debian_systemd()
++{
++    path=$1
++    rootfs=$2
++    init="$(chroot ${rootfs} dpkg-query --search /sbin/init | cut -d : -f 1)"
++    if [ "$init" != "systemd-sysv" ]; then
++       # systemd is not PID 1
++       return
++    fi
++
++    echo 'lxc.autodev = 1' >> "$path/config"
++    echo 'lxc.kmsg = 0' >> "$path/config"
++
++    # This function has been copied and adapted from lxc-fedora
++    rm -f ${rootfs}/etc/systemd/system/default.target
++    touch ${rootfs}/etc/fstab
++    chroot ${rootfs} ln -s /dev/null /etc/systemd/system/udev.service
++    chroot ${rootfs} ln -s /lib/systemd/system/multi-user.target /etc/systemd/system/default.target
++    # Make systemd honor SIGPWR
++    chroot ${rootfs} ln -s /lib/systemd/system/halt.target /etc/systemd/system/sigpwr.target
++    sed -e 's/^ConditionPathExists=/# ConditionPathExists=/' \
++        -e 's/After=dev-%i.device/After=/' \
++        < ${rootfs}/lib/systemd/system/getty\@.service \
++        > ${rootfs}/etc/systemd/system/getty\@.service
++    # Setup getty service on the 4 ttys we are going to allow in the
++    # default config.  Number should match lxc.tty
++    ( cd ${rootfs}/etc/systemd/system/getty.target.wants
++        for i in 1 2 3 4 ; do ln -sf ../getty\@.service getty@tty${i}.service; done )
++
++    return 0
++}
++
+ cleanup()
+ {
+     rm -rf $cache/partial-$release-$arch
+@@ -458,6 +490,8 @@ if [ $? -ne 0 ]; then
+     exit 1
+ fi
+ 
++configure_debian_systemd $path $rootfs
++
+ if [ ! -z $clean ]; then
+     clean || exit 1
+     exit 0

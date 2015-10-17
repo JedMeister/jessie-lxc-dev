@@ -1,0 +1,13 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Adding missing Python shebang,
+ see https://github.com/lxc/lxc/issues/314.
+
+diff -Naurp lxc.orig/config/yum/lxc-patch.py lxc/config/yum/lxc-patch.py
+--- lxc.orig/config/yum/lxc-patch.py
++++ lxc/config/yum/lxc-patch.py
+@@ -1,3 +1,5 @@
++#!/usr/bin/python
++#
+ # Yum plugin to re-patch container rootfs after a yum update is done
+ #
+ # Copyright (C) 2012 Oracle

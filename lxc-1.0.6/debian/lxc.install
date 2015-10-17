@@ -1,0 +1,16 @@
+etc
+lib
+usr/bin
+usr/lib/*/*.so.*
+usr/lib/*/lua
+usr/lib/*/lxc/lxc-*
+usr/lib/*/lxc/rootfs
+usr/lib/python*
+usr/sbin
+usr/share/doc
+usr/share/lua
+usr/share/lxc
+usr/share/man
+var
+
+doc/api/html/*	/usr/share/doc/lxc/html

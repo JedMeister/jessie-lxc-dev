@@ -1,0 +1,14 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Setting options for systemd (Closes: #761196, #761197),
+ see https://github.com/lxc/lxc/issues/335.
+
+diff -Naurp lxc.orig/config/templates/debian.common.conf.in lxc/config/templates/debian.common.conf.in
+--- lxc.orig/config/templates/debian.common.conf.in
++++ lxc/config/templates/debian.common.conf.in
+@@ -63,3 +63,6 @@ lxc.cgroup.devices.allow = c 10:232 rwm
+ # Blacklist some syscalls which are not safe in privileged
+ # containers
+ lxc.seccomp = @LXCTEMPLATECONFIG@/common.seccomp
++
++lxc.autodev = 1
++lxc.kmsg = 0

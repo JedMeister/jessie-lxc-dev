@@ -1,0 +1,15 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Use http.debian.net instead of cdn.debian.net (Closes: #774204, #774472).
+
+diff -Naurp lxc.orig/templates/lxc-debian.in lxc/templates/lxc-debian.in
+--- lxc.orig/templates/lxc-debian.in
++++ lxc/templates/lxc-debian.in
+@@ -33,7 +33,7 @@ done
+ # Make sure the usual locations are in PATH
+ export PATH=$PATH:/usr/sbin:/usr/bin:/sbin:/bin
+ 
+-MIRROR=${MIRROR:-http://cdn.debian.net/debian}
++MIRROR=${MIRROR:-http://http.debian.net/debian}
+ LOCALSTATEDIR="@LOCALSTATEDIR@"
+ LXC_TEMPLATE_CONFIG="@LXCTEMPLATECONFIG@"
+ 

@@ -1,0 +1,40 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Correcting wrong LSB functions in sysvinit script (Closes: #740066),
+ see https://github.com/lxc/lxc/issues/309,
+ https://github.com/lxc/lxc/issues/310,
+ and https://github.com/lxc/lxc/issues/311.
+
+diff -Naurp lxc.orig/config/init/sysvinit/lxc.in lxc/config/init/sysvinit/lxc.in
+--- lxc.orig/config/init/sysvinit/lxc.in
++++ lxc/config/init/sysvinit/lxc.in
+@@ -49,8 +49,8 @@ OPTIONS=
+ STOPOPTS="-a -s"
+ 
+ # Source function library.
+-test ! -r "$sysconfdir"/rc.d/init.d/functions ||
+-        . "$sysconfdir"/rc.d/init.d/functions
++test ! -r /lib/lsb/init-functions ||
++        . /lib/lsb/init-functions
+ 
+ # Source any configurable options
+ test ! -r "$sysconfdir"/sysconfig/lxc ||
+@@ -105,7 +105,8 @@ case "$1" in
+ 	# Start containers
+ 	wait_for_bridge
+ 	# Start autoboot containers first then the NULL group "onboot,".
+-	action $"Starting LXC autoboot containers: " "$bindir"/lxc-autostart $OPTIONS $BOOTGROUPS
++	log_daemon_msg "Starting LXC autoboot containers: "
++	"$bindir"/lxc-autostart $OPTIONS $BOOTGROUPS
+ 	touch "$localstatedir"/lock/subsys/lxc
+ 	;;
+   stop)
+@@ -117,7 +118,8 @@ case "$1" in
+ 	# The stop is serialized and can take excessive time.  We need to avoid
+ 	# delaying the system shutdown / reboot as much as we can since it's not
+ 	# parallelized...  Even 5 second timout may be too long.
+-	action $"Stopping LXC containers: " "$bindir"/lxc-autostart $STOPOPTS $SHUTDOWNDELAY
++	log_daemon_msg "Stopping LXC containers: "
++	"$bindir"/lxc-autostart $STOPOPTS $SHUTDOWNDELAY
+ 	rm -f "$localstatedir"/lock/subsys/lxc
+ 	;;
+   restart|reload|force-reload)

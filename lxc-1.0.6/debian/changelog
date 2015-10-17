@@ -1,0 +1,2048 @@
+lxc (1:1.0.6-6+deb8u1) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Add 0018-CVE-2015-1331-lxclock-use-run-lxc-lock-rather-than-r.patch.
+    CVE-2015-1331: Directory traversal flaw that allows arbitrary file
+    creation as the root user. (Closes: #793298)
+  * Add 0019-CVE-2015-1334-Don-t-use-the-container-s-proc-during-.patch.
+    CVE-2015-1334: Processes intended to be run inside of confined LXC
+    containers could escape their AppArmor or SELinux confinement.
+    (Closes: #793298)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 22 Jul 2015 18:12:27 +0200
+
+lxc (1:1.0.6-6) unstable; urgency=low
+
+  * Use http.debian.net instead of cdn.debian.net (Closes: #774204,
+    #774472).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 05 Jan 2015 19:24:35 +0100
+
+lxc (1:1.0.6-5) unstable; urgency=low
+
+  * Mounting /sys read-only in lxc-debian to prevent (one way of) escaping
+    containers (Closes: #770901).
+  * Adding patch from lxc 1.0.7 to make lxc-debian work with systemd
+    (Closes: #766216).
+  * Adding patch from lxc 1.0.7 to make lxc-debian handle switch of
+    initsystem better.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 06 Dec 2014 13:00:36 +0100
+
+lxc (1:1.0.6-4) unstable; urgency=low
+
+  * Marking -t option in lxc-create manpage as required (Closes: #768778).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 11 Nov 2014 19:57:58 +0100
+
+lxc (1:1.0.6-3) unstable; urgency=low
+
+  * Preserving setuid on lxc-user-nic (Closes: #764815).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 13 Oct 2014 20:44:15 +0200
+
+lxc (1:1.0.6-2) unstable; urgency=low
+
+  * Correcting automatic lua:Suggests generation.
+  * Adding openssl to recommends since upstreams lxc-debian template
+    uses openssl for mac generation.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 07 Oct 2014 09:42:36 +0200
+
+lxc (1:1.0.6-1) unstable; urgency=low
+
+  * Merging upstream version 1.0.6.
+  * Refreshing sysvinit-lsb-functions.patch.
+  * Updating to standards version 3.9.6.
+  * Setting options for systemd in debian.common.conf (Closes: #761196,
+    #761197).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 29 Sep 2014 12:04:40 +0200
+
+lxc (1:1.0.5-3) unstable; urgency=low
+
+  * Dropping fixes for prefix in systemd unit file, not needed anymore.
+  * Moving debootstrap to recommends.
+  * Moving lua to suggests.
+  * Adding lua suggests for non-debian system.
+  * Showing warning when lxc is used on systemd with cgroups mounted in
+    /etc/fstab (Closes: #760357).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 04 Sep 2014 04:30:47 +0200
+
+lxc (1:1.0.5-2) unstable; urgency=low
+
+  * Using and build-depending on dh-systemd (Closes: #758628).
+  * Rewording changelog entry about merging upstream version 1.0.5.
+  * Marking removal of lxc-top due to missing lua-alt-getopt in rules as
+    debian only.
+  * Dropping special handling of lxc-debian on progress-linux.
+  * Renaming debian-config.patch to lxc-debian-fuse.patch.
+  * Renaming lxc-sysvinit.patch to sysvinit-directory.patch.
+  * Renaming lsb-init-headers.patch to sysvinit-lsb-headers.patch.
+  * Renaming lsb-init-functions.patch to sysvinit-lsb-functions.patch.
+  * Renaming lxc-init-lock.patch to sysvinit-lsb-lock.patch.
+  * Renaming lxc-sigint.patch to lxc-attach-sigint.patch.
+  * Adding references to upstreams bug tracker in all patches.
+  * Adding patch from Ondřej Surý <ondrej@debian.org> to change
+    PermitRootLogin yes to PermitRootLogin without-password in sshd_config
+    (Closes: #758647).
+  * Adding patch to set random root password in lxc-debian (Closes:
+    #758643).
+  * Removing /etc/default/lxc for upgrades of wheezy to jessie (Closes:
+    #758800).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 21 Aug 2014 15:54:58 +0200
+
+lxc (1:1.0.5-1) unstable; urgency=low
+
+  * Due to 'popular demand', dropping Debian custom additions and shipping
+    an (almost) vanilla lxc package in Debian from now on.
+  * Removing Jonas from uploaders, thanks for your past support.
+  * Dropping lxc-dev, according to ftp-master this is not acceptable
+    anymore without having split out library package.
+  * Merging upstream version 1.0.5 (Closes: #757326).
+  * Refreshing lsb-init-functions.patch.
+  * Refreshing debian-config.patch.
+  * Adding debootstrap to suggests.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 10 Aug 2014 12:55:27 +0200
+
+lxc (1.1.0~alpha1-5) unstable; urgency=low
+
+  * Updating default mirrors in preseed files.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 29 Jul 2014 00:02:50 +0200
+
+lxc (1.1.0~alpha1-4) unstable; urgency=low
+
+  * Correcting syntax typo in lxc-stuff postinst.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 22 Jul 2014 16:16:29 +0200
+
+lxc (1.1.0~alpha1-3) unstable; urgency=low
+
+  * Switching parent distribution for cairon to jessie.
+  * Adding support for LTS repos.
+  * Using relative mountpoints for data directories.
+  * Updating preseed files.
+  * Replacing /etc/mtab with a symlink to /proc/self/mounts.
+  * Refreshing manpages.
+  * Overwrite container config file when creating new containers.
+  * Adjusting lxc directory automatically in debconf handling.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 22 Jul 2014 11:39:29 +0200
+
+lxc (1.1.0~alpha1-2) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Adding pre-start hook to remove /run files within container.
+
+  [ Nik Lutz ]
+  * Mount a tmpfs on containers /run and /dev/shm directories, newer
+    systemd (jessie/wheezy-backports) require these directories to be
+    mountpoints.
+
+  [ Daniel Baumann ]
+  * Ordering mountpoints in systemd-container hook.
+
+  [ Nik Lutz ]
+  * Moving execution of late-host-command from Configure_system() to
+    Copy_configuration() to be able to adjust the config file via late-
+    host-command.
+
+  [ Daniel Baumann ]
+  * Trimming lxc.pts in lxc-debconfig.
+  * Allowing mac values to be set to none in lxc-debconfig in order to not
+    set any mac address in config.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jul 2014 09:57:50 +0200
+
+lxc (1.1.0~alpha1-1) unstable; urgency=low
+
+  * Merging upstream version 1.1.0~alpha1.
+  * Refreshing lsb-init-functions.patch.
+  * Refreshing debian-config.patch.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 08 Jul 2014 18:45:01 +0200
+
+lxc (1.0.4-4) unstable; urgency=low
+
+  * Also dropping dac_read_search cap by default.
+  * Running subscripts with nowarnings for debconf.
+  * Overwriting resolv.conf when updating intermedate system from cache
+    with host resolv.conf, solves issues where cache is outdated or
+    network environment changed (laptops), thanks to Habegger Andreas
+    <andreas.habegger@bfh.ch>.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 30 Jun 2014 20:10:58 +0200
+
+lxc (1.0.4-3) unstable; urgency=low
+
+  * Updating fixes for upstreams systemd file (Closes: #751553).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 14 Jun 2014 12:38:56 +0200
+
+lxc (1.0.4-2) unstable; urgency=low
+
+  [ Scott Kitterman ]
+  * Using dh-python3 and python3:Depends to generate correct python
+    depends (Closes: #748495).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 13 Jun 2014 21:19:10 +0200
+
+lxc (1.0.4-1) unstable; urgency=low
+
+  * Adding note regarding warnings about memory.use_hierarchy in README
+    (Closes: #750029).
+  * Merging upstream version 1.0.4.
+  * Refreshing lxcinitdir.patch.
+  * Refreshing lxc-sysvinit.patch.
+  * Refreshing lsb-init-headers.patch.
+  * Refreshing lsb-init-functions.patch.
+  * Refreshing lsb-init-lock.patch.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 13 Jun 2014 20:23:24 +0200
+
+lxc (1.0.3-3) unstable; urgency=low
+
+  * Checking for kernel architecture on i386 to support creating amd64
+    systems on i386-systems-with-amd64-kernels as well (Closes: #750387).
+  * Adding initial Estonian debconf translations from Georg Kahest
+    <georg@life.ee> (Closes: #750547).
+  * Disabling dbus, signal, and ptrace in the apparmor profiles until
+    Debian has a recent enough apparmor version (#746764), thanks to
+    Intrigeri <intrigeri@debian.org> (Closes: #750107).
+  * Simplifying default bind mounts in lxc-debconfig for shared storage
+    data.
+  * Updating lxcpath variable in lxc-stuff handling of /etc/lxc/lxc.conf
+    (Closes: #750385).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 11 Jun 2014 16:27:27 +0200
+
+lxc (1.0.3-2) unstable; urgency=low
+
+  * Removing lxc-initscript, not needed anymore.
+  * Updating autostart handling in various tools to use lxc.start.auto.
+  * Building with graphviz (Closes: #749358).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 01 Jun 2014 20:13:48 +0200
+
+lxc (1.0.3-1) unstable; urgency=low
+
+  * Merging upstream version 1.0.3.
+  * Refreshing lxc-sigint.patch.
+  * Manually passing systemd unit directory to install command since
+    upstream fails to do handle that properly.
+  * Updating lxc.install for /usr/sbin/init.lxc.
+  * Adding update-rc.d integration for sysvinit script.
+  * Adding remote_fs depends in irkerhook-lxc initscript.
+  * Adding dummy restart target in irkerhook-lxc initscript.
+  * Adding dummy force-reload target in irkerhook-lxc initscript.
+  * Correcting formating typo in copyright file.
+  * Adding lxc-stuff lintian overrides.
+  * Updating lxc lintian overrides.
+  * Adding patch to add missing shebang in lxc-patch.py.
+  * Updating preseed files for live-debconfig 4.0~alpha32-1.
+  * Don't mount fuse into the container, will fail if fuse isn't
+    installed.
+  * Correcting default mode in lxc-debconfig when being run on a plain
+    debian system.
+  * Updating manpage version and date headers.
+  * Dropping automatic enabling of selinux handling in lxc-debconfig
+    through live-debconfig.
+  * Also automatically preseed openssh-server/lxc-enable for live-
+    debconfig in lxc-debconfig.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 06 May 2014 19:48:16 +0200
+
+lxc (1.0.0-10) unstable; urgency=low
+
+  * Removing conflicts to libvirt-bin (Closes: #745169).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 28 Apr 2014 19:29:47 +0200
+
+lxc (1.0.0-9) unstable; urgency=low
+
+  * Adding conflicts to libvirt-bin which messes with cgroups (Closes:
+    #745169).
+  * Adding updates Spanish debconf translations from Camaleón
+    <noelamac@gmail.com> (Closes: #744854).
+  * Configuring systemd service manually since the upstream makefile fails
+    to do that (Closes: #745670).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 26 Apr 2014 07:47:09 +0200
+
+lxc (1.0.0-8) unstable; urgency=low
+
+  * Building with libseccomp on amd64, armhf, and i386 only (Closes:
+    #744295).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 12 Apr 2014 20:33:08 +0200
+
+lxc (1.0.0-7) unstable; urgency=low
+
+  * Marking lxc/containers debconf default value as non-translatable
+    (Closes: #743473).
+  * Setting language field in French debconf translation file (Closes:
+    #743471).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 05 Apr 2014 11:29:49 +0200
+
+lxc (1.0.0-6) unstable; urgency=low
+
+  * Removing lxc-top until lua-alt-getopt is available.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 02 Apr 2014 22:20:59 +0200
+
+lxc (1.0.0-5) unstable; urgency=low
+
+  * Building with dh --parallel.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 31 Mar 2014 21:06:52 +0200
+
+lxc (1.0.0-4) experimental; urgency=low
+
+  * Only run irkerhook when irkerhook is actually installed, not just when
+    it's enabled only.
+  * Updating todo file.
+  * Adding patch from Stefan Siegel <siegel.stefan@gmail.com> to make lxc-
+    attach ignore SIGINT (Closes: #740264).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 01 Mar 2014 12:32:54 +0100
+
+lxc (1.0.0-3) experimental; urgency=low
+
+  * Adding initial Italian debconf translation from Gianluigi Tiesi
+    <sherpya@netfarm.it> (Closes: #740217).
+  * Creating missing lock directory in upstreams sysvinit initscript
+    (Closes: #740216).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 27 Feb 2014 12:09:38 +0100
+
+lxc (1.0.0-2) experimental; urgency=low
+
+  * Correcting upstreams wrong lsb headers in sysvinit initscript (Closes:
+    #740065).
+  * Correcting upstreams wrong lsb functions in sysvinit initscript
+    (Closes: #740066).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 25 Feb 2014 19:16:02 +0100
+
+lxc (1.0.0-1) experimental; urgency=low
+
+  * Merging upstream version 1.0.0.
+  * Lowering lxc-stuff recommends to suggests.
+  * Installing lxc-debconfig as lxc-debian in lxc-stuff only on progress-
+    linux.
+  * Dropping lxc bash-completion, upstream has stolen^Wtaken without
+    credit to its original author, Gaé Lucas <gaetanlcs@gmail.com>, the
+    debian version and improved it a bit (*sigh*).
+  * Dropping initscript in lxc-stuff now that upstream has one too.
+  * Including new systemd files in lxc.
+  * Refreshing lxcinitdir.patch.
+  * Adding build-depends to doxygen.
+  * Including apidoc in lxc-dev.
+  * Updating todo file.
+  * Correcting wrong default directory for sysvinit scripts.
+  * Still uploading to experimental since it's completely untested yet,
+    but soon starting migration to unstable (Closes: #739782).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 24 Feb 2014 16:17:41 +0100
+
+lxc (1.0.0~beta1-6) experimental; urgency=low
+
+  * Choosing default template based on host distribution for lxc-create
+    when using lxc wrapper.
+  * Correcting creation of mount entry directories.
+  * Correcting recommends handling.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 24 Feb 2014 07:39:45 +0100
+
+lxc (1.0.0~beta1-5) experimental; urgency=low
+
+  * Adding support for multiple channels in irkerhook-lxc.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 19 Jan 2014 08:42:08 +0100
+
+lxc (1.0.0~beta1-4) experimental; urgency=low
+
+  * Starting irkerhook-lxc initscript before lxc.
+  * Using fancy color for some actions in irc notification.
+  * Building without log-path set to /var/log/lxc, it would need to have
+    all subdirectories for the containers created.
+  * Using lxc wrapper for starting containers in lxc-initscript as well.
+  * Relaxing depends of irkerhook-lxc initscript on installed irker.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 18 Jan 2014 10:02:17 +0100
+
+lxc (1.0.0~beta1-3) experimental; urgency=low
+
+  * Correcting lxc-create handling in lxc convenience wrapper.
+  * Setting global log-path to /var/log/lxc.
+  * Adding irkerhook-lxc initscript.
+  * Don't start initscripts on package installation.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 18 Jan 2014 08:42:33 +0100
+
+lxc (1.0.0~beta1-2) experimental; urgency=low
+
+  * Adding irker integration with lxc wrapper.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 17 Jan 2014 17:14:26 +0100
+
+lxc (1.0.0~beta1-1) experimental; urgency=low
+
+  * Merging upstream version 1.0.0~beta1.
+  * Refreshing lxcinitdir.patch.
+  * Updating copyright notices for 2014.
+  * Updating upstream mailinglist reference in copyright file.
+  * Using /srv/lxc/containers instead of /var/lib/lxc as default value.
+  * Dropping lxc/auto debconf handling in lxc-stuff, if the lxc initscript
+    should not be used, it's better to disable it rather than to run it as
+    noop.
+  * Removing internal lxc-debconfig-with-live-debconfig option.
+  * Dropping /etc/default/lxc entirely, directly using upstreams
+    /etc/lxc/lxc.conf instead from now on.
+  * Moving /srv/share/ to /srv/lxc/data/.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 16 Jan 2014 17:20:14 +0100
+
+lxc (1.0.0~alpha3-5) experimental; urgency=low
+
+  * Moving python3 depends to recommends.
+  * Adding lua5.2 to recommends (Closes: #731774).
+  * Updating stop command in lxc-initscript (Closes: #731667).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 09 Dec 2013 19:05:06 +0100
+
+lxc (1.0.0~alpha3-4) experimental; urgency=low
+
+  * Excluding shell scripts in /etc/lxc/debconfig from debconf prompt with
+    list of presed files as well.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 05 Dec 2013 19:25:49 +0100
+
+lxc (1.0.0~alpha3-3) experimental; urgency=low
+
+  * Updating list of special cases in lxc convenience wrapper.
+  * Updating generic preseed examples for live-debconfig 4.0~alpha31.
+  * Updating distribution specific preseed examples for live-debconfig
+    4.0~alpha31.
+  * Updating cairon codename for progress-linux.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 05 Dec 2013 14:05:53 +0100
+
+lxc (1.0.0~alpha3-2) experimental; urgency=low
+
+  * Building with disabled rpath.
+  * Building with explicitly enabled apparmor.
+  * Building with enabled python.
+  * Building with enabled selinux.
+  * Building with enabled tests.
+  * Including lxc-ubuntu again, it apparently was un-broken again as of
+    1.0.0~alpha3.
+  * Using dedicated directory for temporary rootfs mounts.
+  * Dropping superfluous libdir and libexecdir switches in configure call.
+  * Adding patch to correct wrong default directory for lxc-init.
+  * Sorting configure switches.
+  * Building with enabled seccomp.
+  * Building with enabled lua.
+  * Dropping libcap2-bin from suggests, not usefull anymore.
+  * Adding shlibs:Depends to lxc-dev.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 27 Nov 2013 10:01:19 +0100
+
+lxc (1.0.0~alpha3-1) experimental; urgency=low
+
+  * Merging upstream version 1.0.0~alpha3.
+  * Dropping ftbfs-sparc.patch, merged upstream.
+  * Updating preseed-file for live-debconfig 4.0~alpha30-1.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 21 Nov 2013 08:39:56 +0100
+
+lxc (1.0.0~alpha2-6) experimental; urgency=low
+
+  * Also dropping permissions on /var/cache/lxc for consistency
+    (eventhough there's only the minimal bootstrap in there).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 06 Nov 2013 13:42:45 +0100
+
+lxc (1.0.0~alpha2-5) experimental; urgency=low
+
+  * Shortening versioned breaks of lxc-stuff against lxc.
+  * Adding rsync to lxc recommends, lxc-clone uses it (Closes: #728860).
+  * Setting lxc directory permissions to 0700 to avoid unprivileged users
+    on the system to abuse setuid binaries in the container rootfs'es.
+  * Using dpkg-statoverride to allow local overrides of (otherwise)
+    enforced restricted access permissions to /etc/lxc, /var/lib/lxc, and
+    /var/log/lxc.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 06 Nov 2013 13:11:09 +0100
+
+lxc (1.0.0~alpha2-4) experimental; urgency=low
+
+  * Updatin lxc-stuff dehelper install file with proper paths (Closes:
+    #728435).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 03 Nov 2013 14:16:28 +0100
+
+lxc (1.0.0~alpha2-3) experimental; urgency=low
+
+  * Running second pass of live-debconfig with debconf frontend
+    noninteractive and priority critical (Closes: #727705).
+  * Updating to standards version 3.9.5.
+  * Disabling /dev/kmsg in default container config.
+  * Dropping left-over progress-linux apt preconfiguration.
+  * Dropping lxc-halt since all 'new' containers can be shutdown by sigpwr
+    by default for quite a while already.
+  * Renaming lxc-all to lxc-initscript.
+  * Making lxc support 'all' as argument in order to run commands on all
+    available containers.
+  * Updating manpages.
+  * Updating wrapping of default config files.
+  * Allowing to have architecture set to auto in order to have
+    architecture-neutral preseed files.
+  * Unmounting any stray bind mounts on failed container creation.
+  * Excluding directories and includes in /etc/lxc/debconfig from
+    automatic selection dialog.
+  * Moving lxc-stuff docs to local directory within sources tree.
+  * Moving lxc-stuff initscript to local directory within sources tree.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 29 Oct 2013 15:41:44 +0100
+
+lxc (1.0.0~alpha2-2) experimental; urgency=low
+
+  * Moving local additions to separate binary package lxc-stuff.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 23 Oct 2013 20:39:37 +0200
+
+lxc (1.0.0~alpha2-1) experimental; urgency=low
+
+  * Merging upstream version 1.0.0~alpha2.
+  * Dropping ptsmode.patch, included upstream.
+  * Updating homepage field.
+  * Updating copyright file.
+  * Removing currently broken ubuntu template (Closes: #727244).
+  * Removing set -e from rules for shell commands, not needed anymore.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 23 Oct 2013 20:26:32 +0200
+
+lxc (1.0.0~alpha1-2) experimental; urgency=low
+
+  * Adding now required --rootfs handling to lxc-debconfig template.
+  * Keeping local lxc-list for the time being.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 17 Sep 2013 15:59:32 +0200
+
+lxc (1.0.0~alpha1-1) experimental; urgency=low
+
+  * Merging upstream version 1.0.0~alpha1.
+  * Building with autoreconf again.
+  * Removing lxc-configuration-path.patch, not needed anymore.
+  * Removing lxc-debconfig.patch, not needed anymore.
+  * Removing lxc-destroy-symlinks.patch, not needed anymore.
+  * Removing lxc-clone-mac.patch, not needed anymore.
+  * Removing lxc-init-path.patch, not needed anymore.
+  * Removing lxc-quote-arguments.patch, not needed anymore.
+  * Removing lxc-unshare-manpage.patch. not needed anymore.
+  * Removing lxc-path.patch, not needed anymore.
+  * Rediffing ftbfs-sparc.patch.
+  * Rediffing ptsmode.patch.
+  * Renumbering patches.
+  * Removing removal of removed templates in rules.
+  * Reincluding lxc-busybox template.
+  * Keeping local lxc-list for now, but not as the default lxc-list.
+  * Sourcing init-functions in initscript.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 17 Sep 2013 14:40:47 +0200
+
+lxc (0.9.0-21) experimental; urgency=low
+
+  * Updating lxc-backup/lxc-restore.
+  * Changing preseed hiearchy to more suitable includes-before-including
+    for one-level of includes only.
+  * Removing cgroup-bin conflict, again (Closes: #723130).
+  * Correcting variable spelling typo when writing preseeded apt
+    preferences for pinning packages.
+  * Temporarily building without autoreconf since newer automake fails on
+    sub-directories quite unelegantly.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 17 Sep 2013 13:12:17 +0200
+
+lxc (0.9.0-20) experimental; urgency=low
+
+  * Allowing comma seperated list for multiple includes as well as
+    whitespace seperated lists.
+  * Clarifing comment about reading-in preseed files.
+  * Explicitly setting list of enabled component for live-debconfig in
+    includable example preseeds for progress-linux to include all used
+    components rather than minimal default only.
+  * Completing support for multiple preseed files for the first (non-
+    chrooted) part of lxc-debconfig, one level of recursion only for now.
+  * Adding support for multiple preseed files for the second (chrooted)
+    part of lxc-debconfig.
+  * Showing error message if updating the cache has failed with note about
+    removing the cache.
+  * Adding note about hierarchy of preseed files in readme file.
+  * Moving preseed examples to subdirectory within
+    /usr/share/doc/lxc/examples.
+  * Renaming lxc-debconfig preseed file to proper name for use in example
+    directory.
+  * Adding comments in rules for removed upstream stuff.
+  * Updating example preseed files for live-debconfig 4.0~a27-1.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 03 Sep 2013 13:36:36 +0200
+
+lxc (0.9.0-19) experimental; urgency=low
+
+  * Adding preseding support for pinning of local repositories.
+  * Adding support for multiple includable preseed files within one
+    preseed field, to simple toplevel preseed files rather than requireing
+    to use includes in chains.
+  * Changing order of include files, included preseed files overwrite the
+    including preseed file which is the intuitive order.
+  * Removing superfluous colon in progress-linux specific apt preferences.
+  * Moving out logic from initscript to dedicated lxc-all script in
+    preparation for systemd support.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 21 Aug 2013 12:31:42 +0200
+
+lxc (0.9.0-18) experimental; urgency=low
+
+  * Adding patch from James Cook <bonkabonka@gmail.com> to weaken mode on
+    pts for compliance with eglibc 2.18 within containers (Closes:
+    #720122).
+    The origin of the patch referenced in the bts implies that this allows
+    unprivileged users access to the ttys, should that be the case, an
+    unprivileged user can access the host systems terminal (read-write),
+    thus needs further testing before moving this to unstable.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 20 Aug 2013 10:12:46 +0200
+
+lxc (0.9.0-17) experimental; urgency=low
+
+  * Updating vcs fields.
+  * Updating swapaccount parameter in readme for linux 3, thanks to Michal
+    Hocko <mstsxfx@gmail.com> (Closes: #719774).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 17 Aug 2013 15:49:51 +0200
+
+lxc (0.9.0-16) experimental; urgency=low
+
+  * Correcting template location.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 31 Jul 2013 16:26:51 +0200
+
+lxc (0.9.0-15) experimental; urgency=low
+
+  * Updating example preseed file.
+  * Adding sample includeable preseed files for progress-linux.
+  * Moving templates to local subdirectory within packaging.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 31 Jul 2013 16:01:47 +0200
+
+lxc (0.9.0-14) experimental; urgency=low
+
+  * Adding temporary workaround to run chrooted commands in lxc-debconfig
+    with 'set -e' until the whole template can be run with 'set -e'
+    (Closes: #717717).
+  * Adding support of includable preseed files within lxc-debconfig.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 29 Jul 2013 11:50:22 +0200
+
+lxc (0.9.0-13) experimental; urgency=low
+
+  * Adding vcs fields.
+  * Wrapping control fields.
+  * Avoid including internal preseed.sh script (Closes: #717714).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 24 Jul 2013 08:27:38 +0200
+
+lxc (0.9.0-12) experimental; urgency=low
+
+  * Including wget in minimal bootstrap set in order to be able to
+    bootstrap archive-keys trust paths.
+  * Adding three suggestions to improve German debconf translations from
+    Helge Kreutzmann <debian@helgefjell.de> (Closes: #715475).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 12 Jul 2013 15:42:10 +0200
+
+lxc (0.9.0-11) experimental; urgency=low
+
+  * Reverting dropping of sys_boot capability, otherwise sysvinit will not
+    terminate in some cases on shutdown.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 25 Jun 2013 12:19:51 +0200
+
+lxc (0.9.0-10) experimental; urgency=low
+
+  * Sorting debhelper build-with list in rules.
+  * Updating lxc-debconfig for live-debconfig 4.0~a25.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 25 Jun 2013 11:47:22 +0200
+
+lxc (0.9.0-9) experimental; urgency=low
+
+  * Updating for lxc-debconfig for live-debconfig 4.0~a24-1.
+  * Adding missing build-depends to pkg-config.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 05 Jun 2013 10:58:01 +0200
+
+lxc (0.9.0-8) experimental; urgency=low
+
+  * Using dh-autoreconf (Closes: #706443).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 04 Jun 2013 18:42:33 +0200
+
+lxc (0.9.0-7) experimental; urgency=low
+
+  * Updating versioning scheme references to match new scheme since
+    wheezy.
+  * Shortening archive names.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 31 May 2013 13:47:13 +0200
+
+lxc (0.9.0-6) experimental; urgency=low
+
+  * Adding patch from Thomas Nemeth <thomas.nemeth@laposte.net> to fix
+    FTBFS on sparc (Closes: #709454).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 29 May 2013 07:37:32 +0200
+
+lxc (0.9.0-5) experimental; urgency=low
+
+  [ Daniel Baumann ]
+  * Completing temporary hacks for derivatives wrt/ replacing packages of
+    priority essential.
+
+  [ Nik Lutz ]
+  * Replacing container tmpfs with cgroup in systemd-container hook to not
+    waste memory.
+
+  [ Daniel Baumann ]
+  * Setting lxc.autodev depending on initsystem automatically to the
+    correct value explicitly in container config files.
+  * Running live-debconfig after packages have been installed in lxc-
+    debconfig again.
+  * Applying parts from a patch from Jeremiah C. Foster
+    <jeremiah.foster@pelagicore.com> to improve wording in readme (Closes:
+    #709280).
+  * De-emphasign note about bridges in readme.
+  * Correcting typo in lxc-halt.
+  * Correcting multi-default files read-in in init file, thanks to Harald
+    Dunkel <harald.dunkel@aixigo.de>.
+  * Applying slightly modified patch from Harald Dunkel
+    <harald.dunkel@aixigo.de> to add support for lxc-path in local debian
+    additions (Closes: #706379).
+  * Adding slightly modified patch from Harald Dunkel
+    <harald.dunkel@aixigo.de> to add support for lxc-path in upstream
+    commands.
+  * Enabling configpath log.
+  * Cosmetically restrict access to /dev/rtc a bit more in the default lxc
+    config.
+  * Adding sample device configs for /dev/full, /dev/hpet, and /dev/kvm in
+    default container configs.
+  * Dropping note about now obsoleted lxc-setcap in readme.
+  * Autogenerating preseed example file from debconf files.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 28 May 2013 14:50:34 +0200
+
+lxc (0.9.0-4) experimental; urgency=low
+
+  [ Nik Lutz ]
+  * Correcting typo in path when writing hooks for systemd in container
+    configs.
+
+  [ Daniel Baumann ]
+  * Correcting wrong toolname in lxc-unshare manpage (Closes: #705709).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 19 Apr 2013 15:58:57 +0200
+
+lxc (0.9.0-3) experimental; urgency=low
+
+  [ Daniel Baumann ]
+  * Quoting arguments from templates properly in lxc-create, thanks to
+    Denys Gavrysh <deg@ciklum.com> (Closes: #705458).
+
+  [ Nik Lutz ]
+  * Disabling sysfs mount config for containers with systemd.
+  * Adding hooks for systemd support.
+  * Enabling hooks for containers with init-system systemd.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 15 Apr 2013 15:39:30 +0200
+
+lxc (0.9.0-2) experimental; urgency=low
+
+  [ Daniel Baumann ]
+  * Updating todo file.
+  * Also importing base-release keys for progress-linux.
+
+  [ Nik Lutz ]
+  * Do not write empty lxc.mount entries for sys and proc-fs if debconf
+    value is 'none'.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 14 Apr 2013 11:27:15 +0200
+
+lxc (0.9.0-1) experimental; urgency=low
+
+  * Merging upstream version 0.9.0.
+  * Removing lxc-create-template.patch, not needed anymore.
+  * Updating archive-key signature validiation to look by default at both
+    debian and debian-maintainers keyrings.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 11 Apr 2013 13:48:30 +0200
+
+lxc (0.9.0~rc1-5) experimental; urgency=low
+
+  * Enabling backports by default for any release except jessie and sid.
+  * Updating handling of debian-backports differently for wheezy and newer
+    releases.
+  * Making proc and sysfs mount entries preseedable in lxc-debconfig to
+    support custom options.
+  * Correcting automatic directory creation for mount entries, thanks to
+    Niels Boehm <schnurzelpieps2000-dbts@yahoo.com> (Closes: #704814).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 06 Apr 2013 10:51:13 +0200
+
+lxc (0.9.0~rc1-4) experimental; urgency=low
+
+  * Dropping ubuntu mode in lxc-debconfig, ubuntu support seems not worth
+    to pursue (Closes: #704563).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 03 Apr 2013 12:56:59 +0200
+
+lxc (0.9.0~rc1-3) experimental; urgency=low
+
+  * Correcting same typo in lxc-backup, lxc-halt, and lxc-restore too.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 31 Mar 2013 22:01:26 +0200
+
+lxc (0.9.0~rc1-2) experimental; urgency=low
+
+  * Correcting typo in lxc-ls.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 26 Mar 2013 19:31:54 +0100
+
+lxc (0.9.0~rc1-1) experimental; urgency=low
+
+  * Merging upstream version 0.9.0~rc1.
+  * Using lxc.functions in local lxc tools.
+  * Updating version numbers in example preseed files.
+  * Refreshing local manpages.
+  * Updating progress-linux archive references.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 22 Mar 2013 13:26:17 +0100
+
+lxc (0.9.0~alpha3-2) unstable; urgency=low
+
+  * Removing all references to my old email address.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 10 Mar 2013 20:58:58 +0100
+
+lxc (0.9.0~alpha3-1) unstable; urgency=low
+
+  * Updating handling of mount entries to work to do the right thing when
+    files are being tried to be bind-mounted instead of directories.
+  * Merging upstream version 0.9.0~alpha3.
+  * Adding --with-distro=debian when calling configure.
+  * Extending manual hack to workaround broken preseeding in tzdata
+    (Closes: #701800).
+  * Dropping bash.patch, not required anymore.
+  * Adding patch for lxc-create to not try to execute directories as
+    templates should the user have such a situation and specify it
+    (wrongly) (Closes: #701689).
+  * Rediffing lxc-clone-mac.patch.
+  * Currently hardcoding lxc directory.
+  * Defaulting to sysvinit for the time being on progress-linux.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 27 Feb 2013 14:04:06 +0100
+
+lxc (0.9.0~alpha2-10) unstable; urgency=low
+
+  * Adding support for systemd in lxc-debconfig.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 09 Feb 2013 07:55:46 +0100
+
+lxc (0.9.0~alpha2-9) unstable; urgency=low
+
+  * Dropping audit_control, audit_write, linux_immutable, setpcap,
+    sys_pacct, sys_rawio, and sys_time capabilities by default too.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 07 Feb 2013 14:33:35 +0100
+
+lxc (0.9.0~alpha2-8) unstable; urgency=low
+
+  * Added commented set -e in lxc-debconfig as reminder to support that at
+    some point.
+  * Setting umask to 0022 by default within lxc-debconfig, thanks to Ivan
+    Vilata i Balaguer <ivan@selidor.net> (Closes: #699816).
+  * Dropping sys_boot capability by default too.
+  * Still adding commented entries about capabilties to be dropped in lxc
+    config for reference purpose even when no capability is actualy
+    dropped.
+  * Updating manpage date and version numbers.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 07 Feb 2013 13:14:35 +0100
+
+lxc (0.9.0~alpha2-7) unstable; urgency=low
+
+  * Updating example preseeding files for live-debconfig 4.0~a17-1.
+  * Using variable for sysfs mount options for consistency.
+  * Creating mountpoint for automatically detected shared directories.
+  * Also removing archive-key signatures after importing them.
+  * Setting bash shebang until we'll get a fixed lxc-checkconfig for dash
+    in the next upstream release (Closes: #698956).
+  * Using 4 digit prefixes for patches.
+  * Tightening diff headers in patches.
+  * Adding dpkg-source local-options.
+  * Executing late-command and late-host-command indirectly to preserve
+    amps and other things.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 31 Jan 2013 09:08:47 +0100
+
+lxc (0.9.0~alpha2-6) unstable; urgency=low
+
+  * Mounting /proc within container read-only by default.
+  * Correcting dist typo for chairon.
+  * Updating filenames for archive key names for progress-linux.
+  * Checking signatures on progress-linux archive keys on import against
+    debian-keyring, if available.
+  * Improve usability of initial preseed file selection dialog in lxc-
+    debconfig.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 26 Jan 2013 22:45:02 +0100
+
+lxc (0.9.0~alpha2-5) unstable; urgency=low
+
+  * Updating standards to version 3.9.4.
+  * Dropping dpkg-source compression levels.
+  * Dropping bash.patch, not worth the hassle (Closes: #698730).
+  * Renumbering patches.
+  * Updating version in local files.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 24 Jan 2013 19:59:16 +0100
+
+lxc (0.9.0~alpha2-4) unstable; urgency=low
+
+  * Updating example preseeding file for lxc-debconfig.
+  * Don't show root password dialog when crypted root password via live-
+    debconfig has been preseeded.
+  * Enforcing keeping of old configuration files on dpkg when installing
+    packages after live-debconfig and using noninteractive debconf
+    frontend.
+  * Before reworking the initial preseed file selection, let's improve the
+    wording a bit for those that do not want to use a preseed file at all.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 19 Jan 2013 07:59:45 +0100
+
+lxc (0.9.0~alpha2-3) unstable; urgency=low
+
+  * Correcting spelling typo when getting lxc-debconfig/lxc-debconfig-
+    with-live-debconfig from debconf.
+  * Correcting debconf field name for live-debconfig root passwd.
+  * Updating live-debconfig version number in lxc-debconfig example
+    preseed files.
+  * Undoing special handling for live-debconfig script names for live-
+    debconfig 4.0~a15-1.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jan 2013 20:50:19 +0100
+
+lxc (0.9.0~alpha2-2) unstable; urgency=low
+
+  * Updating bash.patch (Closes: #696921).
+  * Correcting mirror typo in preseed example files.
+  * Adding suggests to live-config-doc.
+  * Introducing LXC_DEBCONFIG_WITH_LIVE_DEBCONFIG variable in
+    /etc/default/lxc in order to allow the local admin to not use live-
+    debconfig to configure the chroot but do whatever he wants to do
+    instead (be it manually configuring it, or running late-commands via
+    lxc-debconf).
+  * Adding support for /etc/default/lxc.d/* files which overwrite
+    definitions in /etc/default/lxc if used.
+  * Automatically shortening veth names exceeding 15 characters to match
+    limitations in linux for the interface name lenghts.
+  * Updating bash patch to set shell to /bin/bash in lxc-checkconfig.
+  * Disallowing access to /dev/fuse in the default config, but keep it
+    commented in the config file so the local admin can enable it easily.
+  * Adding commented entries in config for loop device nodes.
+  * Adding patch to correct path to lxc-init in the sshd template (Closes:
+    #697267).
+  * Correcting harmless typo in bash patch regarding if statements in lxc-
+    destroy.
+  * Adding comment about the problem of running live-debconfig before
+    packages have been installed.
+  * Temporarily don't enable backports on wheezy by default as the debian-
+    backports repositores for wheezy are not available yet.
+  * Correcting spelling typo in fieldname for live-debconfigs script
+    selection.
+  * Correcting wrong preseed value for live-debconfig scripts that need to
+    be dereferenced.
+  * Also support internal preseeding for lxc-debconfig-with-live-
+    debconfig, not just the global switch via /etc/default.
+  * Updating live-debconfig run command for version 4.0~a14-1.
+  * Updating copyright file for packaging files.
+  * Updating year in copyright notices for 2013.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jan 2013 15:28:46 +0100
+
+lxc (0.9.0~alpha2-1) unstable; urgency=low
+
+  * Correcting wrong example in local lxc(1) manpage.
+  * Updating live-debconfig initialization for version 4.0~a11.
+  * Updating reference to future passwd support in live-debconfig within
+    lxc-debconfig.
+  * Renaming local archive preseed values for consistency with live-build.
+  * Updating some leftovers from eth to eth-ipv4 renaming (in preparation
+    for ipv6).
+  * Merging upstream version 0.9.0~alpha2.
+  * Dropping lxc-distclean.patch, solved upstream.
+  * Dropping lxc-checkconfig modifications in bash.patch, not worth the
+    constant hassle when new upstream releases appear.
+  * Dropping lxc-create modifications in bash.patch, merged upstream.
+  * Rediffing lxc-destroy modifications in bash.patch.
+  * Removing lxc-ls modifications from bash.patch, lxc-ls is python now.
+  * Rediffing lxc-netstat modifications in bash.patch.
+  * Rediffing lxc-ps modifications in bash.patch.
+  * Dropping lxc-setcap modifications in bash.patch, merged upstream.
+  * Dropping lxc-setuid modifications in bash.patch, merged upstream.
+  * Dropping lxc-version modifications in bash.patch, merged upstream.
+  * Rediffing lxc-debconfig.patch.
+  * Rediffing lxc-destroy-symlinks.patch.
+  * Rediffing lxc-clone-mac.patch.
+  * Removing lxc-kmsg.patch, included upstream.
+  * Renumbering patches.
+  * Updating docbook build-depends for new upstream.
+  * Updating date and version headers in local manpages.
+  * Updating example preseed files for pretty-much final preseed layout
+    for jessie (additions only, no renames).
+  * Prefering local preseeding of live-debconfig over the automatic one
+    from lxc-debconfig.
+  * Changing live-debconfig invokation to also work with locally preseeded
+    live-debconfig script multiselect.
+  * Simplifying live-debconfig preseeding initialization by using live-
+    debconfig-set-selections.
+  * Adding note about late reconfiguring all packages of priority
+    essential.
+  * Using live-debconfigs passwd script for user creation rather than too
+    limited user-setup from debian-installer.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 23 Dec 2012 10:31:55 +0100
+
+lxc (0.8.0-5) unstable; urgency=low
+
+  * Updating live-debconfig initialization for version 4.0~a10.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 06 Dec 2012 21:22:59 +0100
+
+lxc (0.8.0-4) unstable; urgency=low
+
+  * Updating initscript to handle variables in its internal lxc loop
+    function (Closes: #695098).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 05 Dec 2012 13:06:41 +0100
+
+lxc (0.8.0-3) unstable; urgency=low
+
+  * Using tar to copy bootstrapped systems to target, thanks to Marc
+    Fournier <marc.fournier@camptocamp.com> (Closes: #683837, #687767).
+  * Temporarily keeping lxc-ps as a bash script (Closes: #694448).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 28 Nov 2012 12:09:02 +0100
+
+lxc (0.8.0-2) unstable; urgency=low
+
+  * Adding patch to use debian essential stuff rather than openssl to
+    generate random mac address in lxc-clone.
+  * Adding rsync to suggests (Closes: #693932).
+  * Adding Brazilian Portugese debconf translations from Adriano Rafael
+    Gomes <adrianorg@gmail.com> (Closes: #693381).
+  * Adding patch from Serge Hallyn <serge.hallyn@ubuntu.com> to not fail
+    on failure to link kmsg (Closes: #694472).
+  * Using lxc-shutdown in initscript rather than lxc-halt (Closes:
+    #694337).
+  * Using flock without -n in lxc-debconfig.
+  * Updating todo file.
+  * Replacing lxc-ubuntu with lxc-debconfig.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 26 Nov 2012 21:43:10 +0100
+
+lxc (0.8.0-1) unstable; urgency=low
+
+  * Correcting email address in previous changelog entry.
+  * Merging upstream version 0.8.0.
+  * Building with apparmor support.
+  * Removing lxc-directories.patch, merged upstream.
+  * Rediffing lxc-configuration-path.patch.
+  * Removing lxc-create-template-name.patch, merged upstream.
+  * Removing doc-ip-address.patch, merged upstream.
+  * Rediffing and updating bash.patch.
+  * Removing lxc-netstat.patch, merged upstream.
+  * Rediffing lxc-debconfig.patch.
+  * Removing lxc-create-trap-name.patch, merged upstream.
+  * Removing lxc-clone-trap-name.patch, merged upstream.
+  * Removing lxc-console-escape.patch, merged upstream.
+  * Removing lxc-create-rootfs.patch, merged upstream.
+  * Removing lxc-setcap-paths.patch, not needed anymore after merging
+    lxc-directories.patch.
+  * Renumbering patches.
+  * Rebuilding manpages.
+  * Dropping conditional multiarch support, not needed anymore for
+    jessie and wheezy backports.
+  * Renaming progress mode to progress-linux to match the used naming
+    scheme.
+  * Dropping lxc-shutdown alternative for lxc-halt and lxc-stop as
+    upstream added an own lxc-shutdown command.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 12 Nov 2012 14:19:43 +0100
+
+lxc (0.8.0~rc1-14) unstable; urgency=low
+
+  * Removing suggests on lxctl.
+  * Updating todo file.
+  * Adding note about live-debconf requirement when building legacy
+    distributions.
+  * Adding note about veth not removed on container stop in readme.
+  * Disabling access to network devices in lxc config when no network is
+    configured throuhg lxc-debconfig.
+  * Running live-debconfig with the same debconf frontend and priorities
+    as the rest of the template, respecting any preseeds.
+  * Updating debconf variableswithin chrooted setups.
+  * Adding /usr/share/lxc/includes for including random content after
+    container creation.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 31 Oct 2012 15:31:16 +0100
+
+lxc (0.8.0~rc1-13) unstable; urgency=low
+
+  * Suggesting a random MAC by default in lxc-debconfig.
+  * Renaming leftover internal variables from lxc-debconf to lxc-
+    debconfig in lxc-debconfig for consistency.
+  * Using 4 digits as script prefix rather than two for consistency.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 30 Aug 2012 17:37:03 +0200
+
+lxc (0.8.0~rc1-12) unstable; urgency=low
+
+  * Correcting email addres in previous changelog entry.
+  * Using http.debian.net for debian and debian-backports mirrors in
+    lxc-debconfig for debian mode.
+  * Sourcing /etc/lxc/default for lxc directory in lxc-backup and lxc-
+    restore, if available.
+  * Reworking lxc convenience wrapper to work with the different lxc
+    programs that do or do not require container arguments.
+  * Updating todo file.
+  * Adding support for jessie in lxc-debconfig.
+  * Completing support for baureo and baureo-backports in lxc-debconfig.
+  * Adding support for chairon and chairon-backports in lxc-debconfig.
+  * Setting debian default distribution to wheezy in lxc-debconfig.
+  * Setting progress default distribution to baureo in lxc-debconfig.
+  * Correcting debconf fieldnames for bridge and mac in lxc-debconfig
+    templates and examples.
+  * Importing the proper archive keys beyond artax for the respective
+    progress release in lxc-debconfig.
+  * Correcting initscript to not make noise about container configs in
+    /etc/lxc/auto without having an existing container for it.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 30 Aug 2012 15:32:44 +0200
+
+lxc (0.8.0~rc1-11) unstable; urgency=low
+
+  * Avoid superfluous asking twice of debconf questions (Closes:
+    #685602).
+  * Renaming lxc-debconf to lxc-debconfig for consistency with live-
+    debconfig.
+  * Updating base-files hack for dpkg origins.
+  * Installing additional packages after live-debconfig in order to
+    provide an already preconfigured system for configuration packages
+    to act upon.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 29 Aug 2012 12:57:33 +0200
+
+lxc (0.8.0~rc1-10) unstable; urgency=low
+
+  * Adding some lxc related boot parameters in readme (Closes: #683999).
+  * Correcting spelling typo in previous changelog entry.
+  * Adding note about lxc directory in readme.
+  * Sourcing /etc/default/lxc in lxc-ls (Closes: #684124).
+  * Listing attached consoles in lxc-list.
+  * Using printf in lxc-list to produce a table output.
+  * Adding updated Danish debconf translations from Joe Dalton
+    <joedalton2@yahoo.dk> (Closes: #684572).
+  * Mounting /proc with hidepid=2 on progress by default.
+  * Also removing auto symlink when destroying containers.
+  * Protecting multiarch queries since install files are run with set -
+    e.
+  * Adding missing live-config preseedings in lxc-debconf (Closes:
+    #680469).
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 22 Aug 2012 09:01:11 +0200
+
+lxc (0.8.0~rc1-9) unstable; urgency=low
+
+  * Updating todo file.
+  * Correcting freudian typo in lxc directory removal in postrm (Closes:
+    #679842).
+  * Adding updated Czech debconf translations from Michal Simunek
+    <michal.simunek@gmail.com> (Closes: #679681).
+  * Using split out live-debconfig now.
+  * Adding patch to correct paths to lxc-init in lxc-setcap (Closes:
+    #682790).
+  * Adding Japanese debconf translations from Kenshi Muto
+    <kmuto@debian.org> (Closes: #683123).
+  * Using relative mount paths for /proc and /sys in container
+    configurations produced by lxc-debconf (Closes: #683444).
+  * Shortening name of dpkg.cfg.d configuration file used during chroot
+    operations.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 04 Aug 2012 10:38:43 +0200
+
+lxc (0.8.0~rc1-8) unstable; urgency=low
+
+  * Removing comments in lxc-debconf debconf templates, apparently
+    that's no longer supported (Closes: #679849).
+  * Removing lxc directory in postrm (Closes: #679842).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 04 Jul 2012 00:24:59 +0200
+
+lxc (0.8.0~rc1-7) unstable; urgency=low
+
+  * Updating email address in copyright headers for local additions.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 30 Jun 2012 14:08:11 +0200
+
+lxc (0.8.0~rc1-6) unstable; urgency=low
+
+  * Adding copyright headers to local debian additions.
+  * Create /etc/lxc/auto when creating symlinks for the unlikely event
+    that user has it removed.
+  * Switching to xz compression.
+  * Updating GPL boilerplate in copyright file.
+  * Simplyfing backports compatible use of multiarch debhelper install
+    files.
+  * Adding prerm script to remove alternatives (Closes: #668438).
+  * Correcting spelling typo in readme.
+  * Clarify in readme the name of the symlinks in /etc/lxc/auto.
+  * Deriving container name from parent directory of the configuration
+    file, not from the name of the configuration file (Closes: #673552).
+  * Tidying up initscripts start sequence.
+  * Adding explicit docbook build-depends.
+  * Updating lintian overrides.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 30 Jun 2012 00:05:28 +0200
+
+lxc (0.8.0~rc1-5) unstable; urgency=low
+
+  * Updating todo file.
+  * Prefering iputils-ping over inetutils-ping in lxc-progress.cfg
+    example.
+  * Temporarily including bzip2 manually when bootstrapping until
+    #657560 has been fixed in unstable.
+  * Only show experimental as a valid optional archive choice in lxc-
+    debconf for sid, rather than security, volatile, backports, and
+    proposed-updates (which all are evidently unavailable for unstable).
+  * Adding updated Russian debconf translations from Yuri Kozlov
+    <yuray@komyakino.ru> (Closes: #671053).
+  * Adding updated Spanish debconf translations from Camaleón
+    <noelamac@gmail.com> (Closes: #677404).
+  * Adding updated Swedish debconf translations from Martin Bagge
+    <brother@bsnet.se> (Closes: #673889).
+  * Adding updated Portuguese debconf translations from Miguel
+    Figueiredo <elmig@debianpt.org> (Closes: #674950).
+  * Adding updated Dutch debconf translations from Jeroen Schot
+    <schot@a-eskwadraat.nl> (Closes: #673776).
+  * Correcting incorrect lxc-netstat.patch, thanks to Serge Hallyn
+    <serge.hallyn@canonical.com> (Closes: #677124).
+  * Updating lxc-directories.patch (Closes: #664764).
+  * Updating base-files hack for newer versions of base-files (sid).
+  * Moving away from linux-container and use live-config instead.
+  * Replacing linux-container debconf prefix with lxc-debconf for
+    outside template preseeding.
+  * Updating some remaining leftover cruft from linux-container in
+    variable namespacing.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 14 Jun 2012 10:15:53 +0200
+
+lxc (0.8.0~rc1-4) unstable; urgency=low
+
+  * Correcting spelling typo in debconf templates (Closes: #663547).
+  * Adding updated French debconf translations from Christian Perrier
+    <bubulle@debian.org> (Closes: #663546).
+  * Moving architecture independent files from /usr/lib/*/lxc to
+    /usr/share/lxc (Closes: #664160).
+  * Correcting multiarch conditional typo in rules.
+  * Creating lxc directories in a dangling symlink proof way in order to
+    respect sysadmins decisions for temporary incomplete deployments.
+  * Adding patch to avoid messing with rootfs directory creation in lxc-
+    create where its not required (Closes: #664159).
+  * Adding updated Spanish debconf translations from Camaleón
+    <noelamac@gmail.com> (Closes: #665366).
+  * Adding updated Russian debconf translations from Yuri Kozlov
+    <yuray@komyakino.ru> (Closes: #665370).
+  * Also setting libexedir via configure argument which in turn will set
+    lxcinitdir properly on multiarch (Closes: #664764).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 10 Apr 2012 20:04:36 +0200
+
+lxc (0.8.0~rc1-3) unstable; urgency=low
+
+  * Adding pre-depends to multiarch-support (Closes: #663274).
+  * Updating lintian overrides.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 10 Mar 2012 09:51:28 +0100
+
+lxc (0.8.0~rc1-2) unstable; urgency=low
+
+  * Helping to migrate lxc-shutdown debconf setting for alternative on
+    upgrades from 0.7.5 to 0.8.0.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 09 Mar 2012 15:27:21 +0100
+
+lxc (0.8.0~rc1-1) unstable; urgency=low
+
+  * Adding updated Spanish debconf translations from Camaleón
+    <noelamac@gmail.com> (Closes: #658362).
+  * Adding patch from Ivan Vilata i Balaguer <ivan@selidor.net> to allow
+    the escape prefix to escape itself in lxc-console (Closes: #659011).
+  * Adding late host command in addition to late command in lxc-debconf.
+  * Setting default action for lxc shutdown to halt as it's almost
+    always safe and better for data integrity (e.g. some database
+    servers need a regular sysvinit shutdown).
+  * Replacing configuration variable in /etc/default/lxc for default
+    shutdown method with a alternative /usr/bin/lxc-shutdown, pointing
+    to either /usr/bin/lxc-halt or /usr/bin/lxc-stop.
+  * Updating todo file.
+  * Disabling numbered backups for the time being in lxc-backup and lxc-
+    restore, they are for simple prototyping only anyway.
+  * Adding Dutch debconf translations from Jeroen Schot <schot@a-
+    eskwadraat.nl> (Closes: #659694).
+  * Merging upstream version 0.8.0~rc1.
+  * Rediffing lxc-libdir.patch.
+  * Rediffing lxc-configuration-path.patch.
+  * Rediffing bash.patch.
+  * Rediffing lxc-debconf.patch.
+  * Rediffing lxc-create-trap-name.patch.
+  * Rediffing lxc-clone-trap-name.patch.
+  * Removing currently unsupported lxc-ubuntu until lxc-debconf also
+    supports ubuntu (Closes: #660764).
+  * Updating packaging for multiarch.
+  * Updating to standards version 3.9.3.
+  * Updating copyright file machine-readable format version 1.0.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 09 Mar 2012 13:05:03 +0100
+
+lxc (0.7.5-24) unstable; urgency=low
+
+  * Switching to cdn.archive.progress-linux.org in lxc-debconf as
+    default mirror for progress.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 03 Feb 2012 22:23:00 +0100
+
+lxc (0.7.5-23) unstable; urgency=low
+
+  * Also listing frozen containers in lxc-list.
+  * Adding example entry about translations in apt.conf of progress mode
+    in lxc-debconf.
+  * Not upgrading users /etc/default/lxc file and leave any unused cruft
+    in there to rot (Closes: #657654).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 27 Jan 2012 21:38:14 +0100
+
+lxc (0.7.5-22) unstable; urgency=low
+
+  * Handling dangling symlinks to config files in init script.
+  * Correcting wrong preseed file reference when checking for tzdata in
+    lxc-debconf.
+  * Using noninteractive frontend and critical priority for tzdata
+    reconfiguration in lxc-debconf.
+
+ -- Daniel Baumann <daniel.baumann@progress-linux.org>  Tue, 24 Jan 2012 12:17:31 +0100
+
+lxc (0.7.5-21) unstable; urgency=low
+
+  * Disabling console log by default in lxc-debconf again, might confuse
+    users too much.
+  * Automatically creating directories specified in mount entries in
+    lxc-debconf.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 23 Jan 2012 11:19:56 +0100
+
+lxc (0.7.5-20) unstable; urgency=low
+
+  * Correcting and simplyfing creation of lxc directories in /etc.
+  * Enabling console log file in default config of lxc-debconf.
+  * Allowing to use a global cache from /usr/lib/lxc/cache rather than
+    local ones only in /var/lib/cache.
+  * Updating bash.patch to cover lxc-checkconfig more extensively in
+    getting rid of bashisms, thanks to Philipp Matthias Hahn
+    <pmhahn@debian.org> (Closes: #655902).
+  * Allowing system cache to be an unpacked directory too, not just
+    tarballs only.
+  * Updating to debhelper version 9.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 21 Jan 2012 17:32:18 +0100
+
+lxc (0.7.5-19) unstable; urgency=low
+
+  * Updating lintian overrides.
+  * Calling apt-get clean after upgrading caches in lxc-debconf.
+  * Using systems apt cache in lxc-debconf.
+  * Correcting s/parent-archives-areas/parent-archive-areas/ typo in
+    lxc-debconf (Closes: #655176).
+  * Renaming lxc-create.patch to lxc-create-template-name.patch.
+  * Adding patch to correct signal names in lxc-create trap (Closes:
+    #655173).
+  * Adding patch to correct signal names in lxc-clone trap.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 09 Jan 2012 16:13:39 +0100
+
+lxc (0.7.5-18) unstable; urgency=low
+
+  * Updating lxc-debconf example preseed files.
+  * Updating lxc bash completion.
+  * Avoid using debconf frontend names with capital letter in lxc-
+    debconf.
+  * Adding 'automatic' mount entries for shared directories in lxc-
+    debconf only if no manual one has being preseeded.
+  * Correct wrong debconf handling for mount entries in lxc-debconf.
+  * Reconfigure tzdata when using preseeding in lxc-debconf.
+  * Updating year in copyright file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 08 Jan 2012 13:30:37 +0100
+
+lxc (0.7.5-17) unstable; urgency=low
+
+  * Adding updated French debconf templates from Christian Perrier
+    <bubulle@debian.org> (Closes: #653340).
+  * Replacing incomplete patch for fixing lxc-ls and ship an own and
+    simple lxc-ls instead.
+  * Removing sorting from lxc-list since lxc-ls now already provides
+    output sorted.
+  * Using stderr for error messages in local lxc commands.
+  * Adding support for preseedable mount entries in config for lxc-
+    debconf.
+  * Correcting incorrect defaults choices when asking for archive areas
+    in lxc-debconf.
+  * Adding support for fine graned archive control wrt/ security,
+    volatile, and backports in lxc-debconf.
+  * Shuffling stuff around to keep cache minimal and allow archive
+    selection to be effective for postconfig in lxc-debconf.
+  * Correcting some defaults in lxc-debconf.
+  * Removing /etc/hostname prior postconfig in order to actually set the
+    hostname in postconfig in lxc-debconf.
+  * Also setting architecture in config of lxc-debconf even if container
+    is i386 and host is i386 too, to ensures that i386 containers on
+    i386 hosts can be moved to amd64 without needing to touch the config
+    file.
+  * Creating empty /etc/lxc/debconf directory.
+  * Correcting handling of debconf defaults for internal options in lxc-
+    debconf.
+  * Updating preseed example files.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 28 Dec 2011 08:10:28 +0100
+
+lxc (0.7.5-16) unstable; urgency=low
+
+  * Only looking in lxc-debconf for files in /etc/lxc/debconf if the
+    directory exists.
+  * Adding patch to avoid using bash in lxc commands.
+  * Adding patch to lxc-netstat to use -- as seperator, otherwise -n
+    from lxc-netstat collides with netstats -n option (Closes: #641251).
+  * Adding patch for lxc-create to not give vendor specific template
+    advice.
+  * Removing openssh-server from progress default package list in lxc-
+    debconf.
+  * Removing lenny support from lxc-debconf as lenny is going to be
+    unsupported really soon now.
+  * Avoid asking for security mirror and backports mirror for progress
+    and use normal mirror for it in lxc-debconf.
+  * Correcting wrong fallback defaults if user removes suggested value
+    in debconf question when asking parent mirrors in lxc-debconf.
+  * Simplyfing automatic fallback defaults for child security and child
+    backports mirror in lxc-debconf.
+  * Not including tap in lxc-debconf default config.
+  * Adding support for archive area selection in lxc-debconf.
+  * Adding updated Russian debconf templates from Yuri Kozlov
+    <yuray@komyakino.ru> (Closes: #652430).
+  * Adding patch to only list directories in lxc-ls (Closes: #629409).
+  * Regenerating debconf files.
+  * Adding preseed only option for capabilties dropping in lxc config
+    files of lxc-debconf.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 26 Dec 2011 12:13:07 +0100
+
+lxc (0.7.5-15) unstable; urgency=low
+
+  * Adding updated bash completion for lxc from Gaé Lucas
+    <gaetanlcs@gmail.com> which now includes completion for the lxc
+    convenience wrapper.
+  * Replacing tabs with one whitespace in preseed examples for lxc-
+    debconf as there seems to be some problems with it otherwise.
+  * Avoid compressing preseed example files.
+  * Stopping to support both container configs with and without .conf
+    suffix in /etc/lxc/auto, in order to have unique configs they should
+    be named exactely like the container with no artificial suffix.
+  * Letting user choose from existing preseed files from
+    /etc/lxc/decbonf in lxc-debconf.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 12 Dec 2011 12:14:28 +0100
+
+lxc (0.7.5-14) unstable; urgency=low
+
+  * Adding quotes in some eval calls in lxc-debconf to make sure values
+    with whitespaces are treated correctly.
+  * Using LC_ALL=C when executing calls in chroot of lxc-debconf.
+  * Also including ftp_proxy and http_proxy in lxc-debconfs chroot
+    environment (Closes: #651477).
+  * Correcting copy/paste error in lxc-debconf when setting empty
+    default mac address.
+  * Updating preseed examples for lxc-debconf.
+  * Adding bash completion for lxc from Gaé Lucas <gaetanlcs@gmail.com>.
+  * Streamlining bash-completion file a bit.
+  * Correcting wrong auto variable in lxc-debconf.
+  * Simplyfing architecture detection in lxc-debconf which is always
+    running on debian based systems anyway.
+  * Adding support for creating i386 containers on amd64 in lxc-debconf
+    (Closes: #651616).
+  * Reorder entries to drop capabilities in default config of lxc-
+    debconf.
+  * Updating guessing for shared directories in default config of lxc-
+    debconf.
+  * Reorder entry for console log in default config of lxc-debconf.
+  * Updating preseeding examples for lxc-debconf.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 10 Dec 2011 23:20:40 +0100
+
+lxc (0.7.5-13) unstable; urgency=low
+
+  [ Nik Lutz ]
+  * Correcting wrong variable for debconf preseed file in lxc-debconf.
+  * Reordering debconf handling to respect preseed files in lxc-debconf.
+  * Inserting preseeded bridge and mac in lxc config file for lxc-
+    debconf.
+  * Limiting network interface name to 12 characters in lxc-debconf.
+
+  [ Daniel Baumann ]
+  * Streamlining lxc-debconf a bit.
+  * Enabling access to /dev/tty, this is required for e.g. ssh-ing out
+    from the container in lxc-debconf.
+  * Prefering user specified preseed file from commandline option over
+    debconf question in lxc-debconf.
+  * Correcting typo in debconf field for the preseeding file in lxc-
+    debconf.
+  * Removing distribution switch from lxc-debconf, this can be either
+    preseeded or choosen through the debconf frontend.
+  * Adding preseed handling for internal options in lxc-debconf.
+  * Correcting option handling for internal options in lxc-debconf.
+  * Asking user for root password (with a random password as suggestion)
+    in lxc-debconf rather than unconditionally set the random one.
+  * Correct order for entirely non-interactive preseeding in lxc-
+    debconf.
+  * Adding debconf handling for mac and bridge when using multiple
+    interfaces in lxc-debconf.
+  * Adding preseed handling for veth name in lxc-debconf.
+  * Updating lxc-debconf example preseeding files.
+  * Using single hash for sources.list.d comments in lxc-debconf.
+  * Enabling comments for network devices in config for lxc-debconf.
+  * Adding support for mtu in in lxc-debconf.
+  * Adding updated Swedish debconf translations from Martin Bagge
+    <brother@bsnet.se> (Closes: #651346).
+  * Adding support for automatically adding symlinks to /etc/lxc/auto in
+    lxc-debconf.
+  * Adding stub manpage for lxc-debconf.
+  * Adding late command to supported preseeding options in lxc-debconf.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 08 Dec 2011 14:31:16 +0100
+
+lxc (0.7.5-12) unstable; urgency=low
+
+  * Updating preseeding examples for lxc-debconf.
+  * Using volatile only for lenny and squeeze in lxc-debconf.
+  * Avoid asking parent mirrors in debian mode of lxc-debconf.
+  * Allowing access to /dev/pts/* in lxc-debconf default config.
+  * Correcting yet another occurence of a wrong volatile default mirror
+    in lxc-debconf.
+  * If /dev/pts is granted, apparently, access to the tty devices nodes
+    is not longer necessary (Closes: #650399).
+  * Adding -n and --name option to lxc-halt to better integrate with the
+    rest of the lxc tools.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 02 Dec 2011 07:16:07 +0100
+
+lxc (0.7.5-11) unstable; urgency=low
+
+  * Adding /dev/tun in default lxc config in lxc-debconf in ubuntu mode.
+  * Adding updated Czech debconf translations from Michal Simunek
+    <michal.simunek@gmail.com> (Closes: #649121).
+  * Updating /dev/console in default config of lxc-debconf.
+  * Adjust intending in default config for lxc-debconf.
+  * Correcting default tty number in default config of lxc-debconf.
+  * Correct late preseeding in lxc-debconf.
+  * Correcting backports handling for debian in lxc-debconf.
+  * Upgrading priority for lxc directory question from low to high to
+    give it visibility by default (Closes: #650147).
+  * Adding missing symlink for debian of lxc-debconf.
+  * Removing double preseed file variable writing in lxc-debconf.
+  * Avoid wrapping of db_substs calls in lxc-debconf, apparently it
+    fails on some shell configurations.
+  * Correcting wrong volatile default url for lenny in lxc-debconf.
+  * Correcting typo when upgrading system in lxc-debconf.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 01 Dec 2011 06:41:32 +0100
+
+lxc (0.7.5-10) unstable; urgency=low
+
+  * Removing not really working busybox template (Closes: #649193).
+  * Adding preseed examples for lxc-debconf.
+  * Adding support for customizable volatile mirrors in lxc-debconf.
+  * Adding debconf handling for pre-chroot stuff in lxc-debconf by using
+    private temporary debconf db.
+  * Adding support for preseeding local repositories in lxc-debconf.
+  * Use distribution and mode specific list of extra packages in lxc-
+    debconf.
+  * Refactor system upgrade mechanism in lxc-debconf.
+  * Upgrading cache before copying it in lxc-debconf.
+  * Updating todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 29 Nov 2011 20:13:20 +0100
+
+lxc (0.7.5-9) unstable; urgency=low
+
+  * Splitting out linux-container package into own source package.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 15 Nov 2011 22:10:17 +0100
+
+lxc (0.7.5-8) unstable; urgency=low
+
+  * Adding default comments in fstab when using lxc-debconf.
+  * Adding temporary dirty worarkound to avoid wrong matches as long as
+    preseed-files are manually parsed.
+  * Adding apt config for progress in lxc-debconf.
+  * Correcting check for daemontools in linux-container postinst.
+  * Adding upgrade and user-changes proof handling for /etc/inittab.
+  * Updating todo files.
+  * Adding config option to disable automatic installation of
+    recommended packages in lxc-debconf.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 14 Nov 2011 17:45:27 +0100
+
+lxc (0.7.5-7) unstable; urgency=low
+
+  * Touching empty fstab in lxc-debconf.
+  * Correcting rm calls in lxc-debconf to actually match what is
+    intended to be removed.
+  * Shuffling dist-upgrade arround in lxc-debconf to be active in all
+    modes.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 11 Nov 2011 18:53:39 +0100
+
+lxc (0.7.5-6) unstable; urgency=low
+
+  * Updating debian-config.patch to allow mknod calls in containers by
+    default.
+  * Updating debian-config.patch to allow accessing /dev/fuse by
+    default.
+  * Updating debian-config.patch to have devices by default better
+    commented and sorted.
+  * Updating debian-config.patch to also drop sys_module, mac_admin, and
+    mac_override capabilities by default.
+  * Listing local additions in lxc install file explicitly.
+  * Correcting syntax for db_input calls in linux-container config
+    script.
+  * Updating comments for debconf queries with strings that cannot be
+    empty.
+  * Setting debconf questions to unseen when the answer is read from
+    conffile.
+  * Applying some of the suggestions from the "reviewed" control file
+    from debian-l10n-english (Closes: #645850).
+  * Applying some of the suggestions from the "reviewed" templates file
+    from debian-l10n-english.
+  * Updating German debconf translations.
+  * Adding Czech debconf translations from Michal Simunek
+    <michal.simunek@gmail.com> (Closes: #647208).
+  * Adding Danish debconf translations from Joe Hansen
+    <joedalton2@yahoo.dk> (Closes: #646322).
+  * Improving wording on two strings in the German debconf translations,
+    thanks to Erik Pfannenstein <epfannenstein@gmx.de> (Closes:
+    #648059).
+  * Adding Spanish debconf translations from Camaleón
+    <noelamac@gmail.com> (Closes: #647612).
+  * Adding French debconf translations from Julien Patriarca
+    <patriarcaj@gmail.com> (Closes: #646696).
+  * Adding Portuguese debconf translations from Miguel Figueiredo
+    <elmig@debianpt.org> (Closes: #647957).
+  * Adding Russian debconf translations from Yuri Kozlov
+    <yuray@komyakino.ru> (Closes: #646419).
+  * Adding Swedish debconf translations from Martin Bagge
+    <brother@bsnet.se> (Closes: #647256).
+  * Adding Chinese (Simplified) debconf translations from syq
+    <wzssyqa@gmail.com>.
+  * Adding support for static network configuration in linux-container.
+  * Adding scripts to workaround broken squeeze release.
+  * Improving shell code in linux-container config and postinst files.
+  * Updating lxc-create patch to trim warning message when creating new
+    containers without previously existing configuration.
+  * Adding lxc-debconf template.
+  * Replacing upstreams debian template by using newly added debconf
+    template.
+  * Renumbering patches.
+  * Adding debconf handling in linux-container for number of consoles to
+    be run.
+  * Removing openssh-server host keys in cached chroot and recreate them
+    with linux-container.
+  * Reverting title suggestion by debian-l10n-english in debconf
+    templates and use a consistent version for both lxc and linux-
+    container.
+  * Updating todo files.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 11 Nov 2011 15:49:51 +0100
+
+lxc (0.7.5-5) unstable; urgency=low
+
+  * Correcting wording in 0.7.5-3 changelog entry.
+  * Updating copyright file to reflect rewrite of packaging.
+  * Sorting overrides in rules alphabetically.
+  * Adding debconf support for managing lxc directory.
+  * Updating todo files.
+  * Adding conflicts against cgroup-bin for the time being (Closes:
+    #647769).
+  * Silencing update-rc.d calls in linux-container postinst.
+  * Update bailout in linux-container postinst if disabled.
+  * Adding error message in lxc-backup and lxc-restore if container
+    directories do not exist.
+  * Adding lxc-halt command.
+  * Correcting indenting in lxc init script.
+  * Renaming internal command variable to program in lxc init script for
+    consistency with local lxc tools.
+  * Allowing to choose shutdown method trough debconf (Closes: #595926).
+  * Using lxc convenience wrapper in lxc init script.
+  * Adding manpage for lxc-halt.
+  * Updating linux-container hostname handling.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 06 Nov 2011 07:53:56 +0100
+
+lxc (0.7.5-4) unstable; urgency=low
+
+  * Adding patch to add entry for daemontools-run to /etc/inittab in
+    debian template if required.
+  * Adding patch to set a random root password in debian template.
+  * Updating debian-config.patch to create mount entries for shared data
+    directory conditionally upon existence.
+  * Adding patch to silence type call for debootstrap in debian
+    template.
+  * Adding patch to avoid warnings about locales if the target locale
+    and the source locale don't match by using C for all chroot calls
+    within the debian template.
+  * Using compression level 9 also for binary packages.
+  * Adding lxctl to suggests.
+  * Adding manpage for lxc-list.
+  * Using more precise program term instead of command when refering to
+    lxc tools in lxc wrapper.
+  * Adding manpage for lxc wrapper.
+  * Correcting typo in conffile name of lxc config script.
+  * Adding lxc postrm script to remove /etc/default/lxc when purging
+    package.
+  * Adding linux-container support package, currently exactely
+    replicating what lxc-debian does, see readme.
+  * Updating todo file.
+  * Adding readme for linux-container package.
+  * Adjusting wildcard in lxc install file to not include manpages.
+  * Adding manpages file for lxc to include local manpages.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 04 Nov 2011 16:55:08 +0100
+
+lxc (0.7.5-3) unstable; urgency=low
+
+  * Aborting early in initscript if lxc is removed but not purged.
+  * Correcting typo in proc mount entry in the default config of the
+    debian template, thanks to Sylvain Collilieux
+    <Sylvain@Collilieux.net> (Closes: #643715).
+  * Correcting incomplete lxc command loop over all containers in
+    initscript, thanks to Biuro <biuro@ntsn.pl> (Closes: #643774).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 30 Sep 2011 01:01:12 +0200
+
+lxc (0.7.5-2) unstable; urgency=low
+
+  * Do not bail out with usage message when invoking lxc-list via lxc
+    wrapper.
+  * Removing useless lenny template, using the debian template for lenny
+    is better.
+  * Building manpages explicitly (Closes: #639276).
+  * Updating lxc-info for changed output of lxc-info as of 0.7.5.
+  * Adding simple lxc-backup and lxc-restore scripts.
+  * Adding patch to use non-routed, private IPv4 address in
+    documentation examples (Closes: #571525).
+  * Removing destroy option from initscript, unlike destroy as used by
+    e.g. xen, it does wipe all data of a container, the initscript would
+    therefore remove all data of all containers at once which is way to
+    dangerous.
+  * Adding debconf handling for lxc/auto (Closes: #632848).
+  * Adding patch to improve debian default container config.
+  * Adding patch to keep creation of new containers without previously
+    existing configuration non-interactive.
+  * Listing auto information in lxc-list.
+  * Rewriting initscript.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 21 Sep 2011 13:31:51 +0200
+
+lxc (0.7.5-1) unstable; urgency=low
+
+  [ Jonas Genannt ]
+  * Merging upstream version 0.7.5.
+
+  [ Daniel Baumann ]
+  * Removing fedora.patch, not needed anymore for updated fedora
+    template.
+  * Rediffing debian.patch.
+  * Rediffing debian2.patch.
+  * Renaming and renumbering patches.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 22 Aug 2011 11:36:00 +0200
+
+lxc (0.7.4.2-4) unstable; urgency=low
+
+  * Updating todo file.
+  * Readding accidentally dropped patch to disable unneeded umountroot
+    initscript (Closes: #611972).
+  * Adding slightly modified patch from Sylvain Ferriol
+    <ferriol@gate.cnrs.fr> to correct locales generation in debian
+    template (Closes: #607273).
+  * Adding patch to set default runlevel in debian template to 2 instead
+    of 3.
+  * Adding patch to disable services in debian template upgrade proof
+    (Closes: #636851).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 07 Aug 2011 11:12:30 +0200
+
+lxc (0.7.4.2-3) unstable; urgency=low
+
+  * Adding patch to remove double check for configuration path in lxc-
+    create (Closes: #633996).
+  * Adding patch to remove dubious fstab entries in fedora template,
+    thanks to Michael Biebl <biebl@debian.org> (see #633053).
+  * Adding adapted patch from upstream to correct architecture setting
+    in debian template (Closes: #622626).
+  * Adding note in README.Debian about kernel crashes for >> 2.6.36 when
+    using two bridges.
+  * Updating section for lxc-dev.
+  * Adding patch to extend architecture static fallback list for powerpc
+    in debian template.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 22 Jul 2011 17:40:22 +0200
+
+lxc (0.7.4.2-2) unstable; urgency=low
+
+  * Splitting out development files to lxc-dev.
+  * Adding debug package.
+  * Switching architecture fields to linux-any.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 15 Jul 2011 14:20:57 +0200
+
+lxc (0.7.4.2-1) unstable; urgency=low
+
+  * Taking over lxc together with Jonas, Guido is MIA.
+  * Removing useless whitespaces at EOL and EOF.
+  * Removing vcs field.
+  * Removing git-buildpackage conffile.
+  * Removing watch file.
+  * Updating to standards version 3.9.2.
+  * Moving from cdbs to debhelper version 8.
+  * Removing pre-squeeze version from libcap-dev build-depends.
+  * Sorting depends field.
+  * Adding debootstrap to recommends.
+  * Rewrite copyright file in machine-interpretable format.
+  * Prefixing debhelper files with package name.
+  * Removing lxc.docs, currently the references files do not contain
+    useful information.
+  * Adding options file for dpkg source format.
+  * Rediffing libdir patch.
+  * Adding lxc wrapper script.
+  * Adding lxc-list script.
+  * Simplyfing manpages debhelper file.
+  * Adding patch to avoid FTBFS when building twice in a row (Closes:
+    #615485).
+  * Rewriting README.Debian (Closes: #618928).
+  * Sorting debhelper dirs file.
+  * Including examples from upstream documentation.
+  * Adding patch for debian template to also disable module-init-tools
+    initscript.
+  * Removing superfluous section field.
+  * Adding todo file.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 13 Jul 2011 01:36:32 +0200
+
+lxc (0.7.4.2-0.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Correct previous changelog entry (the upload was to unstable directly,
+    not to delayed/3).
+  * Handle symlinks in /etc/lxc/auto.
+  * Correct wrong variable in lxc.init that made it look in the wrong location
+    for auto started containers (Closes: #632849).
+  * Correct spelling typo in README.Debian.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 06 Jul 2011 15:11:37 +0200
+
+lxc (0.7.4.2-0.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Handle empty /etc/lxc/auto (Closes: #632648).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 05 Jul 2011 05:58:59 +0200
+
+lxc (0.7.4.2-0.1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Non-maintainer upload (delayed/3).
+  * Correcting patch to disable debian checkroot script (Closes:
+    #600456).
+  * Adding patch to set default suite to squeeze in debian template
+    (Closes: #600456).
+  * Adding patch to correct include argument when calling debootstrap in
+    debian template (Closes: #607275).
+  * Adding patch to correct charset argument when calling locale-gen in
+    debian template (Closes: #607273).
+  * Adding patch to disable unneeded umountroot initscript (Closes:
+    #611972).
+  * Merging upstream version 0.7.4.2 (Closes: #617934, #627636).
+  * Rediffing fix-too-deep-lib-dir.patch.
+  * Removing disable-debian-checkroot-script.patch, included upstream.
+  * Removing squeeze-missing-tty.patch, included upstream.
+  * Removing restore-lxc.mount-lxc.mount.entry-functionality.patch,
+    included upstream.
+  * Removing Make-debian-mirror-configurable-and-default-to-cdn.patch,
+    included upstream.
+  * Removing Setting-default-suite-to-squeeze-in-debian-template.patch,
+    included upstream.
+  * Removing Correcting-include-argument-when-calling-debootstrap-in-
+    debian-template.patch, included upstream.
+  * Removing Correcting-charset-argument-when-calling-locale-gen-in-
+    debian-template.patch, included upstream.
+  * Removing Adding-patch-to-disable-unneeded-umountroot-
+    initscript.patch, included upstream.
+  * Don't stop containers on upgrade (Closes: #626163).
+
+  [ Jonas Genannt ]
+  * Add an /etc/lxc/auto directory (Closes: #611920).
+
+  [ Daniel Baumann ]
+  * Simplify usage of basename in initscript.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 27 Jun 2011 15:04:11 +0200
+
+lxc (0.7.3-1) unstable; urgency=low
+
+  * New upstream version (closes: #602631)
+    - Support for specifying debian suite (closes: #600459)
+    - Support for declaring a different architecture (closes: #597875)
+  * Fix restart init.d action sequence (closes: #597998)
+  * Move too-deep /usr/lib/lxc/lxc path to a proper patch
+  * Disable checkroot script in debian template (closes: #601001)
+  * Create missing tty devices under squeeze (closes: #600466)
+  * Restore bindmount functionality in newer kernels (closes: #604475)
+  * Make debian mirror configurable (closes: #601422)
+  * Default to cdn.debian.net as a debian mirror (closes: #600464)
+
+ -- Guido Trotter <ultrotter@debian.org>  Mon, 06 Dec 2010 16:24:31 +0100
+
+lxc (0.7.2-1) unstable; urgency=low
+
+  * New upstream version
+  * Convert libcap dependency to versioned (closes: #571527)
+  * Bump up standards version to 3.9.0
+  * Fix too-deep /usr/lib/lxc/lxc path (closes: #587847)
+  * Add init script (closes: #573830)
+    Thanks to Przemysław Knycz <pknycz@kolnet.eu> for the base example
+  * Bump up standards version (3.9.1)
+
+ -- Guido Trotter <ultrotter@debian.org>  Wed, 04 Aug 2010 13:23:42 -0400
+
+lxc (0.7.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Convert to quilt format
+  * Use pristine-tar option in git-buildpackage
+  * lxc-$distro scripts (debian, fedora, sshd, ubuntu, busybox) are now
+    shipped under /usr/lib/lxc/lxc/templates/
+  * Bump up standards version
+
+ -- Guido Trotter <ultrotter@debian.org>  Mon, 28 Jun 2010 10:15:48 +0100
+
+lxc (0.6.5-1) unstable; urgency=low
+
+  * New upstream version (closes: #566771)
+
+ -- Guido Trotter <ultrotter@debian.org>  Mon, 25 Jan 2010 15:39:38 +0000
+
+lxc (0.6.4-2) unstable; urgency=low
+
+  * Ship the /var/lib/lxc directory (closes: #565519)
+
+ -- Guido Trotter <ultrotter@debian.org>  Sat, 16 Jan 2010 16:57:00 +0000
+
+lxc (0.6.4-1) unstable; urgency=low
+
+  [ Stéphane Graber ]
+  * Upgrade standards-version to 3.8.3
+  * Drop the copy of etc/* from rules as "etc" is no longer in the tarball
+
+  [ Guido Trotter ]
+  * New Upstream Version
+  * Update libcap2-dev dependency to libcap-dev
+  * Install upstream-built man pages via debian/lxc.manpages
+  * Drop unneeded docbook-utils build dependency
+
+ -- Guido Trotter <ultrotter@debian.org>  Sun, 10 Jan 2010 10:40:21 +0100
+
+lxc (0.6.3-2) unstable; urgency=low
+
+  * Fix spelling error in README.Debian
+  * Move .gbp.conf to debian/gbp.conf
+
+ -- Guido Trotter <ultrotter@debian.org>  Sun, 26 Jul 2009 12:06:18 +0200
+
+lxc (0.6.3-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Remove duplicate build-dependency on autotools-dev
+  * Build depend on linux-libc-dev
+  * Disable checking of netlink headers from configure
+    (currently fails under sid)
+  * Upgrade standards-version to 3.8.2
+
+ -- Guido Trotter <ultrotter@debian.org>  Sat, 25 Jul 2009 12:24:30 +0200
+
+lxc (0.6.2-2) unstable; urgency=low
+
+  * Add the vcs entry in debian/control
+  * Update README.Debian mentioning lxc-checkconfig
+  * Update README.Debian mentioning the cgroups file system (closes: #532886)
+    (Thanks to Daniel Pittman for that issue and a suggested fix)
+
+ -- Guido Trotter <ultrotter@debian.org>  Fri, 12 Jun 2009 15:27:43 +0100
+
+lxc (0.6.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Guido Trotter <ultrotter@debian.org>  Wed, 29 Apr 2009 17:49:13 +0100
+
+lxc (0.6.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #519408)
+  * Move a few scripts to "examples"
+
+ -- Guido Trotter <ultrotter@debian.org>  Fri, 27 Mar 2009 19:45:45 +0000

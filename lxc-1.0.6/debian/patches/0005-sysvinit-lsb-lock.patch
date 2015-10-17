@@ -1,0 +1,16 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Creating missing lock directory in sysvinit script (Closes: #740216),
+ see https://github.com/lxc/lxc/issues/312.
+
+diff -Naurp lxc.orig/config/init/sysvinit/lxc.in lxc/config/init/sysvinit/lxc.in
+--- lxc.orig/config/init/sysvinit/lxc.in
++++ lxc/config/init/sysvinit/lxc.in
+@@ -92,6 +92,8 @@ wait_for_bridge()
+     done
+ }
+ 
++mkdir -p /var/lock/subsys
++
+ # See how we were called.
+ case "$1" in
+   start)

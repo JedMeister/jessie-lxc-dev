@@ -1,0 +1,67 @@
+#!/usr/bin/make -f
+
+-include /usr/share/dpkg/vendor.mk
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh ${@} --parallel --with autoreconf,autotools_dev,python3,systemd
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		--disable-rpath \
+		--enable-doc \
+		--enable-api-docs \
+		--enable-apparmor \
+		--enable-selinux \
+		--disable-cgmanager \
+		--enable-capabilities \
+		--enable-examples \
+		--enable-python \
+		--disable-mutex-debugging \
+		--enable-lua \
+		--enable-bash \
+		--enable-tests \
+		--enable-configpath-log \
+		--with-distro=debian \
+		--with-init-script=sysvinit,systemd
+
+override_dh_auto_install:
+	dh_auto_install -- SYSTEMD_UNIT_DIR=/lib/systemd/system
+
+	# removing unused files
+	rm -rf debian/tmp/usr/include
+	rm -f debian/tmp/usr/lib/*/*.so
+	rm -rf debian/tmp/usr/lib/*/pkgconfig
+
+	# remove lxc-top until lua-alt-getopt is available
+ifeq ($(DEB_VENDOR),Debian)
+	rm -f debian/tmp/usr/bin/lxc-top
+	rm -f debian/tmp/usr/share/man/*/lxc-top.*
+	rm -f debian/tmp/usr/share/man/*/*/lxc-top.*
+endif
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
+override_dh_compress:
+	dh_compress -X.cfg
+
+override_dh_fixperms:
+	dh_fixperms -Xusr/lib/$(DEB_HOST_MULTIARCH)/lxc/lxc-user-nic
+
+override_dh_gencontrol:
+ifneq ($(DEB_VENDOR),Debian)
+	dh_gencontrol -- -Vlua:Suggests="lua-alt-getopt, lua-filesystem"
+else
+	dh_gencontrol
+endif
+
+override_dh_install:
+	dh_install --fail-missing
+
+override_dh_installinit:
+	dh_installinit -p lxc --onlyscripts --no-restart-on-upgrade --no-start --name lxc
+
+override_dh_strip:
+	dh_strip --dbg-package=lxc-dbg
