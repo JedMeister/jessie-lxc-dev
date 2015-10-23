@@ -5,7 +5,7 @@
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 %:
-	dh ${@} --parallel --with autoreconf,autotools_dev,python2,systemd
+	dh ${@} --parallel --with autoreconf,autotools_dev
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
@@ -29,16 +29,21 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install -- SYSTEMD_UNIT_DIR=/lib/systemd/system
 
-        # lxc-dev-tkl (lxc-dev)
-	mkdir -p debian/lxc-dev/usr/bin
-	mv debian/tmp/usr/bin/lxc-test-* debian/lxc-dev/usr/bin
-
-	# remove lxc-top until lua-alt-getopt is available
-ifeq ($(DEB_VENDOR),Debian)
-	rm -f debian/tmp/usr/bin/lxc-top
-	rm -f debian/tmp/usr/share/man/*/lxc-top.*
-	rm -f debian/tmp/usr/share/man/*/*/lxc-top.*
-endif
+        # remove everything but lxc-dev-tkl (lxc-dev)
+	rm -rf debian/tmp/etc
+	rm -rf debian/tmp/lib
+	rm -rf debian/tmp/usr/bin
+	rm -rf debian/tmp/usr/lib/*/lua
+	rm -rf debian/tmp/usr/lib/*/lxc/lxc-*
+	rm -rf debian/tmp/usr/lib/*/lxc/rootfs
+	rm -rf debian/tmp/usr/lib/python*
+	rm -rf debian/tmp/usr/sbin
+	rm -rf debian/tmp/usr/share/doc
+	rm -rf debian/tmp/usr/share/lua
+	rm -rf debian/tmp/usr/share/lxc
+	rm -rf debian/tmp/usr/share/man
+	rm -rf debian/tmp/var
+	rm -rf debian/tmp/doc/api/html/*
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz
@@ -62,5 +67,3 @@ override_dh_install:
 override_dh_installinit:
 	dh_installinit -p lxc --onlyscripts --no-restart-on-upgrade --no-start --name lxc
 
-override_dh_strip:
-	dh_strip --dbg-package=lxc-dbg
