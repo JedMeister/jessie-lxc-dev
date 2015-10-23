@@ -1,7 +1,7 @@
 Format: 1.8
 Date: Sat, 17 Oct 2015 14:24:03 +1000
 Source: lxc
-Binary: lxc lxc-dbg lxc-dev-tkl
+Binary: lxc-dev-tkl
 Architecture: source amd64
 Version: 1:1.0.6-6+deb8u1+turnkey1
 Distribution: UNRELEASED
@@ -9,8 +9,6 @@ Urgency: medium
 Maintainer: Daniel Baumann <mail@daniel-baumann.ch>
 Changed-By: Jeremy Davis <jeremy@turnkeylinux.org>
 Description:
- lxc        - Linux Containers userspace tools
- lxc-dbg    - Linux Containers userspace tools (debug)
  lxc-dev-tkl - Linux Containers userspace tools (development)
 Changes:
  lxc (1:1.0.6-6+deb8u1+turnkey1) UNRELEASED; urgency=medium
@@ -19,20 +17,14 @@ Changes:
      lxc-dev-tkl: to workaround current Jessie lxc replaces/conflicts
      with lxc-dev
 Checksums-Sha1:
- 848e4dc2465b6e46e66d46084d41f8afd1c85e4c 1312 lxc_1.0.6-6+deb8u1+turnkey1.dsc
- a1c217b0d793ab9eeb422462acc5819017fc3cb1 30000 lxc_1.0.6-6+deb8u1+turnkey1.debian.tar.xz
- 43d7de96899e031aa2b2a95f76c0d523163a66a6 599228 lxc_1.0.6-6+deb8u1+turnkey1_amd64.deb
- 4268de532b8e22173e1cb05621afc4828e6fb411 664044 lxc-dbg_1.0.6-6+deb8u1+turnkey1_amd64.deb
- fc898bc4536d06ff0dbd28df01ecc08f51e0e466 32868 lxc-dev-tkl_1.0.6-6+deb8u1+turnkey1_amd64.deb
+ bf8edce5f5b5906121f3805fd945683b96b5f174 1219 lxc_1.0.6-6+deb8u1+turnkey1.dsc
+ 7fb7f20a5568cdb391f136a79c7e82ca4c54fdd1 29120 lxc_1.0.6-6+deb8u1+turnkey1.debian.tar.xz
+ dc9a6627b933fd80acab87a9ee3b04a6f2d62d7c 473722 lxc-dev-tkl_1.0.6-6+deb8u1+turnkey1_amd64.deb
 Checksums-Sha256:
- f92f5354bf4d3e63e9bff3ec5d439f048b87048f9ce739c1350156987a4366a7 1312 lxc_1.0.6-6+deb8u1+turnkey1.dsc
- 1566da810430ebd4d6394c956e7e5e54d70f4df67622aa9dcc22751110bdb954 30000 lxc_1.0.6-6+deb8u1+turnkey1.debian.tar.xz
- 635562d84e7611f7916cccba993eaf69c3456ac5dd5a6f62ea5db97fb484bd84 599228 lxc_1.0.6-6+deb8u1+turnkey1_amd64.deb
- 90e6984b5a7507ac59c94efcb4771cc5712bdbea77476f5761bcc964aa0388a1 664044 lxc-dbg_1.0.6-6+deb8u1+turnkey1_amd64.deb
- db0c28e4ca703bf4356942695f96d6bede9db9e7cc4a20199c8558a2c6c6434a 32868 lxc-dev-tkl_1.0.6-6+deb8u1+turnkey1_amd64.deb
+ 01791afec4d66a42b13a746bc3c49f34a263a87950bcefdd39076f9e4ef876aa 1219 lxc_1.0.6-6+deb8u1+turnkey1.dsc
+ 48f00c7965a294ea05b66907250ed1b74e7912209c99b916d621ba9a026fbb26 29120 lxc_1.0.6-6+deb8u1+turnkey1.debian.tar.xz
+ 523d746c8b6b9300ea074b9ad21f705e577d6f8eff990fdf5100d5179d8284a4 473722 lxc-dev-tkl_1.0.6-6+deb8u1+turnkey1_amd64.deb
 Files:
- 4786f9f0f872682e50dbb36952878668 1312 admin optional lxc_1.0.6-6+deb8u1+turnkey1.dsc
- aca4a1f93cfea95afeb17837dba51df9 30000 admin optional lxc_1.0.6-6+deb8u1+turnkey1.debian.tar.xz
- 1dac28f72f91e71eed188c1b9e172fb7 599228 admin optional lxc_1.0.6-6+deb8u1+turnkey1_amd64.deb
- 092faec6b463a22f27af3b02ee16c31b 664044 debug extra lxc-dbg_1.0.6-6+deb8u1+turnkey1_amd64.deb
- f1a86f9ac31de46be15e5cddaf875bc0 32868 libdevel optional lxc-dev-tkl_1.0.6-6+deb8u1+turnkey1_amd64.deb
+ e27ffe4c187f46ee7f632668ae7b34ef 1219 admin optional lxc_1.0.6-6+deb8u1+turnkey1.dsc
+ 1f6a3eeb792771a838aa32f0b14de2a8 29120 admin optional lxc_1.0.6-6+deb8u1+turnkey1.debian.tar.xz
+ a76391323ee5e32184df19524bd9dfa9 473722 libdevel optional lxc-dev-tkl_1.0.6-6+deb8u1+turnkey1_amd64.deb
